@@ -33,20 +33,6 @@ export default function Services({ onSelectService }) {
       shortDesc: 'Encompasses the entire process of creating a new product, from conceptualization and research to prototyping and final execution. It focuses on solving user problems and enhancing the overall user experience and functionality of a product.',
       fullDesc: 'End-to-end digital product design covering user research, journey mapping, wireframing, interactive prototyping, and UX engineering.',
       techs: ['Figma', 'Prototyping', 'User Research', 'UI/UX Engineering', 'Wireframing']
-    },
-    {
-      num: '05',
-      title: 'Enterprise Software & Cloud',
-      shortDesc: 'Scalable cloud architecture, microservices, enterprise CRMs, ERP solutions, and DevOps automation designed to support high-throughput operations.',
-      fullDesc: 'Enterprise-grade CRMs, ERPs, microservice APIs, and automated cloud platforms built for reliability, security, and multi-region scalability.',
-      techs: ['AWS / GCP', 'Docker & K8s', 'Microservices', 'DevOps', 'Security & SOC2']
-    },
-    {
-      num: '06',
-      title: 'Mobile App Engineering',
-      shortDesc: 'Native iOS and Android mobile apps along with cross-platform Flutter development, engineered for 60fps performance and smooth offline capabilities.',
-      fullDesc: 'Native iOS & Android mobile applications built with Swift, Kotlin, and Flutter featuring offline sync, push notifications, and hardware integration.',
-      techs: ['Flutter', 'React Native', 'iOS Swift', 'Android Kotlin', 'Firebase']
     }
   ];
 
