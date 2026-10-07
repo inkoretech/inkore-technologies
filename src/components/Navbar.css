@@ -1,0 +1,153 @@
+.navbar-header-ritovex {
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  border-bottom: 1px dashed #e2e8f0;
+  z-index: 1000;
+  height: 84px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-container-ritovex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-logo-ritovex {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #111827;
+}
+
+.logo-cube-icon {
+  color: #111827;
+}
+
+.logo-text-ritovex {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #111827;
+}
+
+.navbar-links-ritovex {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-link-ritovex {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #374151;
+  position: relative;
+  padding: 8px 0;
+}
+
+.nav-link-ritovex.active {
+  color: #111827;
+  font-weight: 700;
+}
+
+.nav-link-ritovex.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #111827;
+}
+
+.nav-link-ritovex:hover {
+  color: #111827;
+}
+
+.navbar-right-ritovex {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cart-badge-ritovex {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+  padding: 8px 14px;
+  border-radius: var(--radius-button);
+  background: #f3f4f6;
+  cursor: pointer;
+}
+
+.phone-contact-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.phone-icon-box {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-button);
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111827;
+}
+
+.phone-text-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.phone-label {
+  font-size: 0.72rem;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.phone-number {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.mobile-toggle-btn {
+  display: none;
+  color: #111827;
+}
+
+.mobile-drawer-ritovex {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-drawer-ritovex a {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+@media (max-width: 960px) {
+  .navbar-links-ritovex, .cart-badge-ritovex, .phone-contact-box {
+    display: none;
+  }
+  .mobile-toggle-btn {
+    display: block;
+  }
+}

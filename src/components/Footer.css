@@ -1,0 +1,217 @@
+.footer-section-ritovex-dark {
+  background: #0f1115;
+  color: #ffffff;
+  padding-top: 80px;
+  padding-bottom: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Top Newsletter Row matching Screenshot 4 */
+.footer-top-newsletter-row {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 60px;
+}
+
+.newsletter-ritovex-title {
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.newsletter-inline-form {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 8px;
+}
+
+.newsletter-underline-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1rem;
+  outline: none;
+}
+
+.newsletter-underline-input::placeholder {
+  color: #6b7280;
+}
+
+.newsletter-arrow-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: color var(--transition-smooth);
+}
+
+.newsletter-arrow-btn:hover {
+  color: #60a5fa;
+}
+
+.newsletter-success-tag {
+  color: #10b981;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 4 Navigation Columns matching Screenshot 4 */
+.footer-4cols-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.footer-col-head {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.footer-col-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-col-links a {
+  font-size: 0.92rem;
+  color: #9ca3af;
+  transition: color var(--transition-smooth);
+}
+
+.footer-col-links a:hover {
+  color: #ffffff;
+}
+
+.footer-contact-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-contact-items li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+.footer-contact-items svg {
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+/* Copyright & Social Row matching Screenshot 4 */
+.footer-sub-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 40px;
+}
+
+.footer-copy-text {
+  font-size: 0.88rem;
+  color: #9ca3af;
+}
+
+.footer-copy-text strong {
+  color: #ffffff;
+}
+
+.footer-social-inline {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.88rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.social-icons-group {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icons-group a {
+  color: #9ca3af;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: lowercase;
+  transition: color var(--transition-smooth);
+}
+
+.social-icons-group a:hover {
+  color: #ffffff;
+}
+
+/* Huge Metallic Striped Typography Banner matching Screenshot 4 */
+.huge-brand-banner {
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 10px;
+  user-select: none;
+}
+
+.metallic-striped-text {
+  font-family: var(--font-heading);
+  font-size: clamp(4rem, 15vw, 14rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 0.85;
+  display: inline-block;
+  background: repeating-linear-gradient(
+    0deg,
+    #ffffff,
+    #ffffff 4px,
+    #4b5563 4px,
+    #4b5563 8px
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.85;
+}
+
+@media (max-width: 960px) {
+  .footer-top-newsletter-row {
+    grid-template-columns: 1fr;
+  }
+  .footer-4cols-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-4cols-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-sub-bar {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,111 @@
+.about-page-wrapper {
+  background: #ffffff;
+}
+
+/* About Hero matching Screenshot 1 */
+.about-hero-section {
+  padding: 90px 0 70px 0;
+  background: #ffffff;
+  border-bottom: 1px dashed #e5e7eb;
+}
+
+.about-hero-title {
+  font-size: clamp(3.2rem, 6vw, 5.5rem);
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+
+.about-hero-subtitle {
+  font-size: 1.15rem;
+  color: #374151;
+  line-height: 1.65;
+  margin-bottom: 36px;
+  font-weight: 500;
+}
+
+.about-hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* Stat Cards Top Row matching Screenshot 2 */
+.about-stats-top-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 70px;
+}
+
+/* Main Layout matching Screenshot 2 */
+.about-success-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.about-cutout-frame-large {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  border-radius: 40px 140px 40px 40px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+}
+
+.about-pillars-heading {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.about-pillars-desc {
+  font-size: 1.05rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+
+.pillars-2x2-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.pillar-item h4 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.pillar-item p {
+  font-size: 0.9rem;
+  color: #6b7280;
+  line-height: 1.55;
+}
+
+@media (max-width: 1024px) {
+  .about-stats-top-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .about-success-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-stats-top-row {
+    grid-template-columns: 1fr;
+  }
+  .pillars-2x2-grid {
+    grid-template-columns: 1fr;
+  }
+}

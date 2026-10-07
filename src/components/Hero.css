@@ -1,0 +1,68 @@
+.hero-section-ritovex {
+  background: #ffffff;
+  padding: 80px 0 100px 0;
+  border-bottom: 1px dashed #e5e7eb;
+}
+
+.hero-container-ritovex {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero-title-ritovex {
+  font-size: clamp(2.8rem, 5vw, 4.4rem);
+  font-weight: 800;
+  line-height: 1.08;
+  color: #111827;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+
+.hero-subtitle-ritovex {
+  font-size: 1.15rem;
+  color: #4b5563;
+  line-height: 1.65;
+  margin-bottom: 36px;
+  max-width: 540px;
+}
+
+.hero-actions-ritovex {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+/* Custom Cutout Shape matching Screenshot 5 */
+.hero-cutout-frame {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  border-radius: 40px 140px 40px 40px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+}
+
+.hero-cutout-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 960px) {
+  .hero-container-ritovex {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-subtitle-ritovex {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-actions-ritovex {
+    justify-content: center;
+  }
+  .hero-cutout-frame {
+    height: 400px;
+  }
+}
