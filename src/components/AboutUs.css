@@ -121,21 +121,47 @@
   gap: 28px;
 }
 
-@media (max-width: 960px) {
-  .about-grid-ritovex {
-    grid-template-columns: 1fr;
-  }
-  .stats-2x2-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.homepage-process-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+  background: #ffffff;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  display: inline-flex;
 }
 
-@media (max-width: 600px) {
-  .stats-2x2-grid {
-    grid-template-columns: 1fr;
-  }
-  .partner-logos-row {
-    gap: 16px;
-    font-size: 1.1rem;
-  }
+.process-flow-label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #111827;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.process-flow-chips {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.process-chip {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #2563eb;
+  background: #eff6ff;
+  padding: 4px 12px;
+  border-radius: 6px;
+}
+
+.process-arrow {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  font-weight: 600;
 }

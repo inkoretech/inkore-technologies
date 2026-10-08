@@ -31,17 +31,21 @@ export default function LetsTalk() {
           <div className="lets-talk-info reveal-on-scroll reveal-left">
             <div className="badge-pill">
               <Box size={14} />
-              <span>Contact Us</span>
+              <span>Let's Build</span>
             </div>
 
             <h2 className="lets-talk-heading">
-              Let’s Start Talk. <br />
-              Have a Project in Mind?
+              Have an idea? <br />
+              Let's build it.
             </h2>
 
             <p className="lets-talk-subtitle">
-              We'd love to hear about your vision. Fill out the form or reach out directly to schedule a free technical consultation with our team.
+              Whether you're starting a new product, improving an existing system, or looking to automate your business, Inkore can help turn your requirements into technology that delivers.
             </p>
+
+            <div className="cta-action-callout">
+              <span>Let's talk about your project.</span>
+            </div>
 
             <div className="lets-talk-contact-list">
               <div className="talk-contact-card reveal-on-scroll delay-1">
@@ -129,10 +133,12 @@ export default function LetsTalk() {
                     onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                     className="talk-form-input talk-form-select"
                   >
-                    <option value="Web Development">Web Design & Development</option>
-                    <option value="Mobile Development">Mobile App Engineering</option>
-                    <option value="Enterprise Systems">Branding & Enterprise Software</option>
-                    <option value="Product Design">Product Design & UI/UX</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Mobile App Development">Mobile App Development</option>
+                    <option value="Custom Software Development">Custom Software Development</option>
+                    <option value="Backend & API Development">Backend & API Development</option>
+                    <option value="Cloud & DevOps">Cloud & DevOps</option>
+                    <option value="Automation & AI">Automation & AI</option>
                   </select>
                 </div>
 
@@ -141,7 +147,7 @@ export default function LetsTalk() {
                   <textarea
                     required
                     rows={4}
-                    placeholder="Tell us about your project goals and timeline..."
+                    placeholder="Tell us about your project goals and requirements..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="talk-form-input talk-form-textarea"
@@ -149,7 +155,7 @@ export default function LetsTalk() {
                 </div>
 
                 <button type="submit" className="btn-ritovex-dark talk-submit-btn" disabled={submitting}>
-                  {submitting ? 'Sending...' : 'Send Message'}
+                  {submitting ? 'Connecting...' : 'Start a Conversation'}
                   <Send size={16} />
                 </button>
 

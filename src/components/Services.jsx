@@ -8,31 +8,45 @@ export default function Services({ onSelectService }) {
   const servicesList = [
     {
       num: '01',
-      title: 'Web Design',
-      shortDesc: 'Focuses on the aesthetic and user experience of a website, creating visually appealing and intuitive layouts. It involves aspects like graphic design, typography, and color schemes to enhance user engagement.',
-      fullDesc: 'Custom high-converting website designs engineered with interactive wireframes, custom design systems, and mobile responsive layouts built for maximum conversion.',
-      techs: ['Figma', 'UI/UX Design', 'Design Systems', 'Responsive Web']
+      title: 'Web Development',
+      shortDesc: 'Modern, responsive web applications, SaaS products, and portals engineered for performance, speed, and seamless user experiences.',
+      fullDesc: 'We design and engineer high-performance web platforms, SaaS products, and enterprise web applications using modern frameworks like React, Next.js, Node.js, and cloud databases.',
+      techs: ['React', 'Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS']
     },
     {
       num: '02',
-      title: 'Web Development',
-      shortDesc: 'Involves the coding and programming that makes a website functional and interactive. This includes front-end development (what users see) and back-end development (server, database, and application logic).',
-      fullDesc: 'High-speed web applications and SaaS platforms powered by React, Next.js 14, Node.js, and multi-region cloud databases.',
-      techs: ['React', 'Next.js', 'Node.js', 'PostgreSQL', 'Tailwind']
+      title: 'Mobile App Development',
+      shortDesc: 'Native and cross-platform mobile apps for iOS and Android built with smooth UI, offline capabilities, and high performance.',
+      fullDesc: 'End-to-end mobile app engineering from concept and UI/UX design to App Store and Google Play deployment, leveraging React Native, Flutter, and native mobile technologies.',
+      techs: ['React Native', 'Flutter', 'iOS / Swift', 'Android / Kotlin', 'REST & GraphQL']
     },
     {
       num: '03',
-      title: 'Branding',
-      shortDesc: 'The process of creating a unique identity for a company or product, encompassing its name, logo, messaging, and overall market perception. It aims to establish recognition and a positive emotional connection with the target audience.',
-      fullDesc: 'Complete brand identity systems including logo design, brand guidelines, typography, messaging strategy, and visual design assets for brand recognition.',
-      techs: ['Brand Strategy', 'Logo Design', 'Visual Identity', 'Typography', 'Style Guides']
+      title: 'Custom Software Development',
+      shortDesc: 'Tailored enterprise software solutions and business systems designed to solve complex operational challenges and scale smoothly.',
+      fullDesc: 'Custom software platforms engineered specifically around your business rules, operational workflows, and security requirements to drive real business growth and efficiency.',
+      techs: ['System Architecture', 'Microservices', 'Python', 'Java / Spring', 'PostgreSQL']
     },
     {
       num: '04',
-      title: 'Product Design',
-      shortDesc: 'Encompasses the entire process of creating a new product, from conceptualization and research to prototyping and final execution. It focuses on solving user problems and enhancing the overall user experience and functionality of a product.',
-      fullDesc: 'End-to-end digital product design covering user research, journey mapping, wireframing, interactive prototyping, and UX engineering.',
-      techs: ['Figma', 'Prototyping', 'User Research', 'UI/UX Engineering', 'Wireframing']
+      title: 'Backend & API Development',
+      shortDesc: 'Secure, high-throughput server architecture, microservices, REST & GraphQL APIs, and database optimizations.',
+      fullDesc: 'Scalable backend engines and secure API integrations built to power high-traffic applications, process data asynchronously, and connect third-party platforms.',
+      techs: ['RESTful APIs', 'GraphQL', 'Node.js', 'Python / FastAPI', 'Redis', 'PostgreSQL']
+    },
+    {
+      num: '05',
+      title: 'Cloud & DevOps',
+      shortDesc: 'Cloud infrastructure provisioning, automated CI/CD deployment pipelines, containerization, and 99.9% uptime management.',
+      fullDesc: 'Modernize your application infrastructure on AWS, Google Cloud, or Azure with Docker, Kubernetes, automated deployment pipelines, and proactive security monitoring.',
+      techs: ['AWS', 'Google Cloud', 'Docker', 'Kubernetes', 'Terraform', 'CI/CD Pipelines']
+    },
+    {
+      num: '06',
+      title: 'Automation & AI',
+      shortDesc: 'Intelligent process automation, AI/LLM integrations, machine learning pipelines, and smart workflow optimization.',
+      fullDesc: 'Empower your software with artificial intelligence, custom LLM agents, automated document processing, and intelligent workflow automation to maximize operational speed.',
+      techs: ['OpenAI / LLMs', 'Python', 'LangChain', 'Workflow Automation', 'Machine Learning']
     }
   ];
 

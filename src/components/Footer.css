@@ -2,81 +2,70 @@
   background: #0f1115;
   color: #ffffff;
   padding-top: 80px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
   position: relative;
 }
 
-/* Top Newsletter Row matching Screenshot 4 */
-.footer-top-newsletter-row {
+/* Main Footer Grid Setup */
+.footer-brand-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1.3fr 0.9fr 0.9fr 0.9fr;
   gap: 48px;
-  align-items: center;
-  padding-bottom: 60px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: 60px;
 }
 
-.newsletter-ritovex-title {
-  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
-  font-weight: 800;
+.footer-brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.footer-logo-text {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 900;
   color: #ffffff;
-  line-height: 1.3;
   letter-spacing: -0.02em;
 }
 
-.newsletter-inline-form {
+.footer-brand-tagline {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #2563eb;
+  letter-spacing: -0.01em;
+  margin-bottom: 20px;
+}
+
+.footer-tech-chips-bar {
   display: flex;
   align-items: center;
-  gap: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  padding-bottom: 8px;
+  gap: 8px;
+  flex-wrap: wrap;
+  max-width: 320px;
 }
 
-.newsletter-underline-input {
-  flex: 1;
-  background: transparent;
-  border: none;
-  color: #ffffff;
-  font-size: 1rem;
-  outline: none;
+.footer-tech-chip {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #9ca3af;
 }
 
-.newsletter-underline-input::placeholder {
-  color: #6b7280;
+.footer-chip-dot {
+  color: #4b5563;
+  font-size: 0.75rem;
 }
 
-.newsletter-arrow-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: #ffffff;
+.footer-mail-link {
+  color: #9ca3af;
   font-size: 0.9rem;
-  font-weight: 700;
-  transition: color var(--transition-smooth);
+  transition: color 0.2s ease;
 }
 
-.newsletter-arrow-btn:hover {
-  color: #60a5fa;
-}
-
-.newsletter-success-tag {
-  color: #10b981;
-  font-size: 0.95rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* 4 Navigation Columns matching Screenshot 4 */
-.footer-4cols-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-  margin-bottom: 60px;
+.footer-mail-link:hover {
+  color: #ffffff;
 }
 
 .footer-col-head {
@@ -130,7 +119,7 @@
   justify-content: space-between;
   padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin-bottom: 40px;
+  margin-bottom: 0;
 }
 
 .footer-copy-text {

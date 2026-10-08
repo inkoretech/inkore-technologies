@@ -115,12 +115,12 @@ export default function ContactSection({ initialService, initialMessage, isModal
                 onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                 className="form-input form-select"
               >
-                <option value="Web Development">Web Application Development</option>
-                <option value="Mobile App Engineering">Mobile App Engineering (iOS/Android)</option>
-                <option value="Cloud & DevOps">Cloud & DevOps Infrastructure</option>
-                <option value="AI & Machine Learning">AI & Machine Learning Solutions</option>
-                <option value="Custom Enterprise Software">Custom Enterprise Software</option>
-                <option value="UI/UX Product Design">UI/UX Product Design</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Mobile App Development">Mobile App Development</option>
+                <option value="Custom Software Development">Custom Software Development</option>
+                <option value="Backend & API Development">Backend & API Development</option>
+                <option value="Cloud & DevOps">Cloud & DevOps</option>
+                <option value="Automation & AI">Automation & AI</option>
               </select>
             </div>
           </div>
