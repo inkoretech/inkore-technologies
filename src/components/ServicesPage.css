@@ -1,0 +1,239 @@
+.services-page-wrapper {
+  background: #ffffff;
+}
+
+/* Services Hero matching Screenshot 1 */
+.services-hero-section {
+  padding: 100px 0 80px 0;
+  background: #ffffff;
+  border-bottom: 1px dashed #e5e7eb;
+}
+
+.services-hero-title {
+  font-size: clamp(3.4rem, 6.5vw, 6rem);
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 20px;
+}
+
+.services-hero-subtitle {
+  font-size: 1.15rem;
+  color: #4b5563;
+  max-width: 650px;
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+
+.services-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-ritovex-orange {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: var(--radius-button);
+  background: #ff6b4a;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all var(--transition-smooth);
+}
+
+.btn-ritovex-orange:hover {
+  background: #ff5530;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 74, 0.35);
+}
+
+/* Why Choose Our Services Split Section matching Screenshot 4 */
+.why-services-split-section {
+  background: #ffffff;
+}
+
+.why-services-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+}
+
+.why-split-img-box {
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+}
+
+.why-split-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.why-split-dark-box {
+  background: #ffffff;
+  color: #111827;
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 1px dashed #e5e7eb;
+  border-bottom: 1px dashed #e5e7eb;
+}
+
+.why-split-heading {
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+
+.why-split-lead {
+  font-size: 1.05rem;
+  color: #4b5563;
+  line-height: 1.65;
+  margin-bottom: 40px;
+}
+
+.why-split-points-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.why-split-point-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.orange-check-icon {
+  color: #ff6b4a;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.why-split-point-item h4 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.why-split-point-item p {
+  font-size: 0.95rem;
+  color: #6b7280;
+  line-height: 1.55;
+}
+
+/* Services FAQ Grid matching Screenshot 2 */
+.services-faq-grid {
+  display: grid;
+  grid-template-columns: 0.35fr 0.65fr;
+  gap: 32px;
+  margin-top: 56px;
+  align-items: start;
+}
+
+.faq-left-cta-card {
+  background: #f7f8fa;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-left-cta-card h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.faq-card-line {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #d1d5db;
+  margin-bottom: 20px;
+}
+
+.faq-left-cta-card p {
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.faq-right-accordion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.services-faq-item {
+  background: #f7f8fa;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all var(--transition-smooth);
+}
+
+.services-faq-item.open {
+  border-color: #111827;
+}
+
+.services-faq-question-btn {
+  width: 100%;
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.faq-plus-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111827;
+  flex-shrink: 0;
+}
+
+.services-faq-answer {
+  padding: 0 28px 22px 28px;
+  font-size: 0.98rem;
+  color: #4b5563;
+  line-height: 1.65;
+  border-top: 1px dashed #e5e7eb;
+  margin-top: 4px;
+  padding-top: 16px;
+}
+
+@media (max-width: 1024px) {
+  .why-services-split-grid {
+    grid-template-columns: 1fr;
+  }
+  .services-faq-grid {
+    grid-template-columns: 1fr;
+  }
+  .why-split-dark-box {
+    padding: 60px 30px;
+  }
+}

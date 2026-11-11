@@ -1,0 +1,119 @@
+.testimonials-section-ritovex {
+  background: #f7f8fa;
+  position: relative;
+}
+
+/* Dark Ticker Bar matching Screenshot 2 */
+.dark-marquee-bar {
+  background: #0b0d10;
+  padding: 16px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 1px solid #1f2937;
+  border-bottom: 1px solid #1f2937;
+}
+
+.marquee-content-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  animation: scrollMarquee 35s linear infinite;
+}
+
+@keyframes scrollMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-service-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.marquee-star {
+  color: #6b7280;
+  font-size: 1.1rem;
+}
+
+/* Cards Grid matching Screenshot 2 */
+.testimonial-cards-grid-ritovex {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 56px;
+}
+
+.testimonial-card-ritovex {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 36px 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ritovex-stars-row {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.ritovex-quote-text {
+  font-size: 0.98rem;
+  color: #374151;
+  line-height: 1.65;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.ritovex-card-divider {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #e5e7eb;
+  margin-bottom: 24px;
+}
+
+.ritovex-author-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ritovex-author-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ritovex-author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.ritovex-author-name {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.ritovex-author-role {
+  font-size: 0.82rem;
+  color: #6b7280;
+}
+
+@media (max-width: 960px) {
+  .testimonial-cards-grid-ritovex {
+    grid-template-columns: 1fr;
+  }
+}
