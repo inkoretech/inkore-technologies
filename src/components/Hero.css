@@ -1,5 +1,5 @@
 .hero-section-ritovex {
-  background: #f8f9fc;
+  background: var(--bg-light, #f8f9fc);
   padding: 90px 0 110px 0;
   border-bottom: 1px dashed #e5e7eb;
   position: relative;
@@ -11,14 +11,16 @@
   grid-template-columns: 1.15fr 0.85fr;
   gap: 56px;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .badge-pill {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: rgba(17, 24, 39, 0.05);
-  border: 1px solid rgba(17, 24, 39, 0.12);
+  background: rgba(37, 99, 235, 0.06);
+  border: 1px solid rgba(37, 99, 235, 0.2);
   padding: 6px 16px;
   border-radius: 9999px;
   margin-bottom: 24px;
@@ -28,7 +30,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #2563EB;
+  background-color: #2563eb;
   box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
   animation: pulseDot 2s infinite;
 }
@@ -46,11 +48,11 @@
 }
 
 .badge-text {
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #111827;
+  color: #1a2332;
 }
 
 .hero-title-ritovex {
@@ -84,7 +86,7 @@
 .hero-actions-ritovex {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
   flex-wrap: wrap;
   margin-bottom: 40px;
 }
@@ -93,20 +95,22 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: #2563EB;
+  background: #2563eb;
   color: #ffffff;
   padding: 14px 28px;
   border-radius: 10px;
   font-weight: 600;
   font-size: 1rem;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+  cursor: pointer;
+  border: none;
 }
 
 .btn-hero-primary:hover {
   background: #1d4ed8;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
 }
 
 .btn-hero-secondary {
@@ -121,13 +125,29 @@
   font-weight: 600;
   font-size: 1rem;
   transition: all 0.25s ease;
+  cursor: pointer;
 }
 
 .btn-hero-secondary:hover {
-  border-color: #2563EB;
+  border-color: #2563eb;
+  color: #2563eb;
   background: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.08);
+}
+
+.btn-ritovex-ghost {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #2563eb;
+  cursor: pointer;
+  padding: 8px 12px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-ritovex-ghost:hover {
+  color: #1d4ed8;
+  transform: translateX(3px);
 }
 
 .hero-pillars {
@@ -136,6 +156,7 @@
   gap: 24px;
   padding-top: 24px;
   border-top: 1px solid #e5e7eb;
+  flex-wrap: wrap;
 }
 
 .hero-pillar-item {
@@ -148,48 +169,50 @@
 }
 
 .pillar-icon {
-  color: #2563EB;
+  color: #2563eb;
 }
 
-/* Custom Cutout Shape Frame & Container */
+/* Image container */
 .hero-image-container {
   position: relative;
-  width: 100%;
 }
 
 .hero-cutout-frame {
   position: relative;
   width: 100%;
-  height: 520px;
+  height: 480px;
   border-radius: 40px 140px 40px 40px;
   overflow: hidden;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
 .hero-cutout-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Stat Bar Positioned Below Image without Overlapping */
+.hero-image-container:hover .hero-cutout-img {
+  transform: scale(1.04);
+}
+
+/* Floating stat pill */
 .hero-floating-stat-bar {
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 16px 24px;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  gap: 16px;
-  background: #ffffff;
-  padding: 16px 24px;
-  border-radius: 20px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(17, 24, 39, 0.08);
-  margin-top: -24px;
-  position: relative;
-  z-index: 5;
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
+  animation: floatGentle 5s infinite ease-in-out;
 }
 
 .stat-pill-item {
@@ -199,20 +222,19 @@
 }
 
 .stat-pill-icon {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 10px;
   background: #eff6ff;
-  color: #2563EB;
+  color: #2563eb;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
 }
 
 .stat-pill-icon.icon-green {
   background: #eff6ff;
-  color: #2563EB;
+  color: #2563eb;
 }
 
 .stat-pill-text {
@@ -221,46 +243,35 @@
 }
 
 .stat-pill-val {
-  font-size: 0.92rem;
-  font-weight: 700;
+  font-size: 0.95rem;
+  font-weight: 800;
   color: #111827;
-  line-height: 1.2;
 }
 
 .stat-pill-lbl {
-  font-size: 0.78rem;
-  color: #6b7280;
+  font-size: 0.76rem;
+  color: #64748b;
+  font-weight: 600;
 }
 
 .stat-pill-divider {
   width: 1px;
-  height: 32px;
-  background: #e5e7eb;
+  height: 36px;
+  background: #e2e8f0;
 }
 
 @media (max-width: 960px) {
   .hero-container-ritovex {
     grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .hero-description-group {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .hero-actions-ritovex {
-    justify-content: center;
-  }
-  .hero-pillars {
-    justify-content: center;
-    flex-wrap: wrap;
   }
   .hero-cutout-frame {
-    height: 400px;
+    height: 360px;
   }
-  .floating-badge-top {
-    left: 12px;
-  }
-  .floating-badge-bottom {
-    right: 12px;
+  .hero-floating-stat-bar {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: 24px;
   }
 }

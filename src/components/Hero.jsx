@@ -1,23 +1,23 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Sparkles, Layers, Code2, Cloud, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Sparkles, Layers, Code2, Cloud, ShieldCheck, Cpu } from 'lucide-react';
 import './Hero.css';
 
 export default function Hero({ onOpenContact }) {
   const navigate = useNavigate();
 
-  const handleExploreServices = () => {
-    navigate('/services');
-  };
-
   return (
     <section className="hero-section-ritovex" id="hero">
+      {/* Ambient floating glow spheres */}
+      <div className="ambient-glow-sphere sphere-blue"></div>
+      <div className="ambient-glow-sphere sphere-purple"></div>
+
       <div className="container hero-container-ritovex">
         {/* Left Text Column */}
         <div className="hero-left-col reveal-on-scroll reveal-left">
           <div className="badge-pill">
             <span className="badge-pulse-dot"></span>
-            <span className="badge-text">Build what matters.</span>
+            <span className="badge-text">Engineering Digital Excellence</span>
           </div>
 
           <h1 className="hero-title-ritovex">
@@ -26,10 +26,10 @@ export default function Hero({ onOpenContact }) {
 
           <div className="hero-description-group">
             <p className="hero-subtitle-ritovex">
-              Inkore is a software development and technology company building reliable web, mobile, cloud, and enterprise solutions for businesses of all sizes.
+              We are a specialized software engineering and technology company building scalable web applications, native & cross-platform mobile apps, and robust cloud architectures.
             </p>
             <p className="hero-subtitle-sub">
-              From idea to deployment, we turn complex business requirements into simple, scalable digital products.
+              From early-stage concept to global production deployment, we engineer simple, resilient digital products that empower enterprises and redefine user engagement.
             </p>
           </div>
 
@@ -39,8 +39,12 @@ export default function Hero({ onOpenContact }) {
               <ArrowRight size={18} />
             </button>
 
-            <button className="btn-ritovex-outline btn-hero-secondary" onClick={handleExploreServices}>
+            <button className="btn-ritovex-outline btn-hero-secondary" onClick={() => navigate('/services')}>
               <span>Explore Our Services</span>
+            </button>
+
+            <button className="btn-ritovex-ghost" onClick={() => navigate('/estimate')}>
+              <span>Calculate Estimate →</span>
             </button>
           </div>
 
@@ -48,15 +52,15 @@ export default function Hero({ onOpenContact }) {
           <div className="hero-pillars">
             <div className="hero-pillar-item">
               <Code2 size={18} className="pillar-icon" />
-              <span>Web & Mobile</span>
+              <span>Web & Mobile Systems</span>
             </div>
             <div className="hero-pillar-item">
               <Cloud size={18} className="pillar-icon" />
-              <span>Cloud & DevOps</span>
+              <span>Cloud & DevOps Architecture</span>
             </div>
             <div className="hero-pillar-item">
-              <Layers size={18} className="pillar-icon" />
-              <span>Enterprise Apps</span>
+              <Cpu size={18} className="pillar-icon" />
+              <span>AI Integration & Automation</span>
             </div>
           </div>
         </div>
@@ -80,7 +84,7 @@ export default function Hero({ onOpenContact }) {
                 </div>
                 <div className="stat-pill-text">
                   <span className="stat-pill-val">End-to-End</span>
-                  <span className="stat-pill-lbl">Idea to Deployment</span>
+                  <span className="stat-pill-lbl">Concept to Production</span>
                 </div>
               </div>
 
@@ -102,4 +106,3 @@ export default function Hero({ onOpenContact }) {
     </section>
   );
 }
-

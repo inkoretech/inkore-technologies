@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom';
-import { PhoneCall, Menu, X } from 'lucide-react';
+import { PhoneCall, Menu, X, ArrowRight } from 'lucide-react';
 import './Navbar.css';
 
 export default function Navbar({ onOpenContact }) {
@@ -25,10 +25,13 @@ export default function Navbar({ onOpenContact }) {
   return (
     <header className="navbar-header-ritovex">
       <div className="container navbar-container-ritovex">
-        {/* Logo */}
+        {/* Brand Logo with exact Inkore image asset */}
         <Link to="/" className="navbar-logo-ritovex" onClick={() => setMobileMenuOpen(false)}>
-          <span className="logo-dot-icon">●</span>
-          <span className="logo-text-ritovex">Inkore</span>
+          <img 
+            src="./assets/logo-transparent.png" 
+            alt="Inkore Technologies" 
+            className="navbar-brand-logo-img"
+          />
         </Link>
 
         {/* Center Nav Links */}
@@ -55,13 +58,19 @@ export default function Navbar({ onOpenContact }) {
             Services
           </NavLink>
 
-          <a 
-            href="#blog" 
-            className="nav-link-ritovex"
-            onClick={(e) => { e.preventDefault(); handleSectionClick('blog'); }}
+          <NavLink 
+            to="/work" 
+            className={({ isActive }) => `nav-link-ritovex ${isActive ? 'active' : ''}`}
           >
-            Blog
-          </a>
+            Work
+          </NavLink>
+
+          <NavLink 
+            to="/estimate" 
+            className={({ isActive }) => `nav-link-ritovex ${isActive ? 'active' : ''}`}
+          >
+            Estimator
+          </NavLink>
 
           <NavLink 
             to="/contact" 
@@ -86,6 +95,7 @@ export default function Navbar({ onOpenContact }) {
           <button 
             className="mobile-toggle-btn"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle navigation"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -98,10 +108,12 @@ export default function Navbar({ onOpenContact }) {
           <Link to="/" onClick={() => setMobileMenuOpen(false)}>Home</Link>
           <Link to="/about" onClick={() => setMobileMenuOpen(false)}>About Us</Link>
           <Link to="/services" onClick={() => setMobileMenuOpen(false)}>Services</Link>
-          <a href="#blog" onClick={() => handleSectionClick('blog')}>Blog</a>
+          <Link to="/work" onClick={() => setMobileMenuOpen(false)}>Work / Portfolio</Link>
+          <Link to="/estimate" onClick={() => setMobileMenuOpen(false)}>Cost Estimator</Link>
           <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
           <button className="btn-ritovex-dark" onClick={() => { setMobileMenuOpen(false); onOpenContact(); }}>
-            Contact Us
+            <span>Start a Project</span>
+            <ArrowRight size={16} />
           </button>
         </div>
       )}

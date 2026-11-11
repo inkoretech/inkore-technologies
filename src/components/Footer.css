@@ -3,43 +3,34 @@
   color: #ffffff;
   padding-top: 80px;
   padding-bottom: 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
   position: relative;
 }
 
-/* Main Footer Grid Setup */
 .footer-brand-grid {
   display: grid;
-  grid-template-columns: 1.3fr 0.9fr 0.9fr 0.9fr;
+  grid-template-columns: 1.35fr 0.9fr 1.05fr 0.9fr;
   gap: 48px;
   margin-bottom: 60px;
 }
 
 .footer-brand-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
-  color: #2563EB;
+  display: inline-block;
+  margin-bottom: 20px;
 }
 
-.logo-cube-icon {
-  color: #2563EB;
-}
-
-.footer-logo-text {
-  font-family: var(--font-heading);
-  font-size: 1.8rem;
-  font-weight: 900;
-  color: #ffffff;
-  letter-spacing: -0.02em;
+.footer-brand-logo-img {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .footer-brand-tagline {
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: #2563eb;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #60a5fa;
   letter-spacing: -0.01em;
   margin-bottom: 20px;
 }
@@ -49,22 +40,22 @@
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
-  max-width: 320px;
+  max-width: 360px;
 }
 
 .footer-tech-chip {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  color: #9ca3af;
+  color: #94a3b8;
 }
 
 .footer-chip-dot {
-  color: #4b5563;
+  color: #475569;
   font-size: 0.75rem;
 }
 
 .footer-mail-link {
-  color: #9ca3af;
+  color: #94a3b8;
   font-size: 0.9rem;
   transition: color 0.2s ease;
 }
@@ -74,10 +65,12 @@
 }
 
 .footer-col-head {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 800;
-  color: #60a5fa;
-  margin-bottom: 20px;
+  color: #ffffff;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .footer-col-links {
@@ -89,8 +82,8 @@
 
 .footer-col-links a {
   font-size: 0.92rem;
-  color: #9ca3af;
-  transition: color var(--transition-smooth);
+  color: #94a3b8;
+  transition: color 0.2s ease;
 }
 
 .footer-col-links a:hover {
@@ -109,98 +102,50 @@
   align-items: center;
   gap: 10px;
   font-size: 0.9rem;
-  color: #9ca3af;
+  color: #94a3b8;
 }
 
 .footer-contact-items svg {
-  color: #ffffff;
+  color: #60a5fa;
   flex-shrink: 0;
 }
 
-/* Copyright & Social Row matching Screenshot 4 */
+.footer-contact-items a {
+  color: #94a3b8;
+  transition: color 0.2s ease;
+}
+
+.footer-contact-items a:hover {
+  color: #ffffff;
+}
+
 .footer-sub-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin-bottom: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-copy-text {
   font-size: 0.88rem;
-  color: #9ca3af;
-}
-
-.footer-copy-text strong {
-  color: #ffffff;
+  color: #64748b;
 }
 
 .footer-social-inline {
   display: flex;
   align-items: center;
   gap: 16px;
-  font-size: 0.88rem;
-  color: #ffffff;
-  font-weight: 700;
-}
-
-.social-icons-group {
-  display: flex;
-  gap: 12px;
-}
-
-.social-icons-group a {
-  color: #9ca3af;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: lowercase;
-  transition: color var(--transition-smooth);
-}
-
-.social-icons-group a:hover {
-  color: #60a5fa;
-}
-
-/* Huge Metallic Striped Typography Banner matching Screenshot 4 */
-.huge-brand-banner {
-  text-align: center;
-  width: 100%;
-  overflow: hidden;
-  padding-top: 10px;
-  user-select: none;
-}
-
-.metallic-striped-text {
-  font-family: var(--font-heading);
-  font-size: clamp(4rem, 15vw, 14rem);
-  font-weight: 900;
-  letter-spacing: 0.04em;
-  line-height: 0.85;
-  display: inline-block;
-  background: repeating-linear-gradient(
-    0deg,
-    #ffffff,
-    #ffffff 4px,
-    #4b5563 4px,
-    #4b5563 8px
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  opacity: 0.85;
 }
 
 @media (max-width: 960px) {
-  .footer-top-newsletter-row {
-    grid-template-columns: 1fr;
-  }
-  .footer-4cols-grid {
+  .footer-brand-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
-  .footer-4cols-grid {
+  .footer-brand-grid {
     grid-template-columns: 1fr;
   }
   .footer-sub-bar {

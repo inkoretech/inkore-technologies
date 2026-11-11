@@ -1,0 +1,53 @@
+.estimator-page-wrapper {
+  background: var(--bg-light, #f8f9fc);
+}
+
+.estimator-hero-section {
+  padding: 100px 0 50px 0;
+  background: #ffffff;
+  border-bottom: 1px dashed #e2e8f0;
+}
+
+.estimator-hero-title {
+  font-size: clamp(2.6rem, 5vw, 4.4rem);
+  font-weight: 800;
+  color: var(--text-dark-primary, #111827);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  max-width: 850px;
+  margin: 0 auto 20px auto;
+}
+
+.estimator-hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-dark-secondary, #4b5563);
+  max-width: 660px;
+  margin: 0 auto 32px auto;
+  line-height: 1.6;
+}
+
+.estimator-trust-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 12px 24px;
+  background: #f8f9fc;
+  border: 1px solid #e2e8f0;
+  border-radius: 9999px;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.text-blue {
+  color: #2563eb;
+}
+

@@ -4,11 +4,12 @@ import Navbar from './components/Navbar';
 import HomePage from './components/HomePage';
 import AboutUsPage from './components/AboutUsPage';
 import ServicesPage from './components/ServicesPage';
+import WorkPage from './components/WorkPage';
+import EstimatorPage from './components/EstimatorPage';
 import ContactUsPage from './components/ContactUsPage';
 import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 import ScrollToTop from './components/ScrollToTop';
-import LetsTalk from './components/LetsTalk';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
 function AppContent() {
@@ -25,7 +26,13 @@ function AppContent() {
 
   const handleOpenGeneralContact = () => {
     setSelectedServiceForForm('');
-    setIsContactModalOpen(true);
+    // Smooth scroll to contact form if present or navigate to /contact
+    const contactElem = document.getElementById('contact');
+    if (contactElem) {
+      contactElem.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.location.hash = '#/contact';
+    }
   };
 
   return (
@@ -50,7 +57,7 @@ function AppContent() {
             } 
           />
 
-          {/* Standalone About Us Page Route matching Screenshots 1, 2, 3, 4 */}
+          {/* Standalone About Us Page Route */}
           <Route 
             path="/about" 
             element={
@@ -61,7 +68,7 @@ function AppContent() {
             } 
           />
 
-          {/* Dedicated Services Page Route matching Screenshots 1, 2, 3, 4 */}
+          {/* Dedicated Services Page Route */}
           <Route 
             path="/services" 
             element={
@@ -72,7 +79,27 @@ function AppContent() {
             } 
           />
 
-          {/* Dedicated Contact Us Page Route matching Screenshots 1 & 2 */}
+          {/* Dedicated Work / Portfolio Page Route */}
+          <Route 
+            path="/work" 
+            element={
+              <WorkPage 
+                onOpenContact={handleOpenGeneralContact} 
+              />
+            } 
+          />
+
+          {/* Dedicated Cost Estimator Page Route */}
+          <Route 
+            path="/estimate" 
+            element={
+              <EstimatorPage 
+                onOpenContact={handleOpenGeneralContact} 
+              />
+            } 
+          />
+
+          {/* Dedicated Contact Us Page Route */}
           <Route 
             path="/contact" 
             element={
@@ -95,7 +122,7 @@ function AppContent() {
         </Routes>
       </main>
 
-      {/* Footer matching Screenshot 4 */}
+      {/* Footer */}
       <Footer onOpenContact={handleOpenGeneralContact} />
     </div>
   );

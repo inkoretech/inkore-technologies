@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Box, CheckCircle2, Plus, Minus } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Box, CheckCircle2, Plus, Minus, ArrowRight, Sparkles } from 'lucide-react';
 import LetsTalk from './LetsTalk';
 import Services from './Services';
 import './ServicesPage.css';
 
 export default function ServicesPage({ onOpenContact, onSelectService }) {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
+  const navigate = useNavigate();
 
   const faqItems = [
     {
@@ -28,19 +30,24 @@ export default function ServicesPage({ onOpenContact, onSelectService }) {
 
   return (
     <div className="services-page-wrapper">
-      {/* 1. Services Hero Banner matching Screenshot 1 */}
+      {/* 1. Services Hero Banner */}
       <section className="services-hero-section">
         <div className="container text-left reveal-on-scroll">
-          <h1 className="services-hero-title">Creative Solutions</h1>
+          <div className="badge-pill">
+            <Sparkles size={14} />
+            <span>Full-Cycle Engineering</span>
+          </div>
+          <h1 className="services-hero-title">Creative & Resilient IT Solutions</h1>
           <p className="services-hero-subtitle">
-            We deliver innovative, tailor-made strategies that solve problems, spark ideas, and bring your vision to life — efficiently and effectively.
+            We deliver innovative, tailor-made digital engineering that solves complex problems, accelerates market delivery, and scales smoothly alongside your enterprise.
           </p>
           <div className="services-hero-actions">
             <button className="btn-ritovex-dark" onClick={onOpenContact}>
-              Start Projects
+              <span>Start a Project</span>
+              <ArrowRight size={16} />
             </button>
-            <button className="btn-ritovex-orange" onClick={onOpenContact}>
-              Get a Free Consultation
+            <button className="btn-ritovex-light" onClick={() => navigate('/estimate')}>
+              <span>Calculate Project Cost</span>
             </button>
           </div>
         </div>
@@ -49,7 +56,7 @@ export default function ServicesPage({ onOpenContact, onSelectService }) {
       {/* 2. Dark Services Rows Component */}
       <Services onSelectService={onSelectService} />
 
-      {/* 3. Why Choose Our Services Split Section matching Screenshot 4 */}
+      {/* 3. Why Choose Our Services Split Section */}
       <section className="why-services-split-section">
         <div className="why-services-split-grid">
           {/* Left Column Image */}
@@ -63,34 +70,44 @@ export default function ServicesPage({ onOpenContact, onSelectService }) {
 
           {/* Right Column Box */}
           <div className="why-split-dark-box reveal-on-scroll reveal-right">
-            <div className="badge-pill">
+            <div className="badge-pill dark">
               <Box size={14} />
-              <span>Benefit</span>
+              <span>Enterprise Advantages</span>
             </div>
 
-            <h2 className="why-split-heading">Why Choose Our Services</h2>
+            <h2 className="why-split-heading">Why Choose Inkore Engineering</h2>
             <p className="why-split-lead">
-              Get high-quality results, faster delivery, and tailored solutions that grow with your business. We focus on value, efficiency, and long-term success for every project.
+              Get high-quality results, predictable delivery sprints, and bespoke solutions that grow with your business. We focus on business value, efficiency, and long-term partnership.
             </p>
 
             <div className="why-split-points-list">
               <div className="why-split-point-item">
-                <div className="orange-check-icon">
+                <div className="blue-check-icon">
                   <CheckCircle2 size={22} />
                 </div>
                 <div>
-                  <h4>Fast & Reliable Delivery</h4>
-                  <p>We prioritize timely completion without compromising quality.</p>
+                  <h4>Fast & Reliable Agile Delivery</h4>
+                  <p>Bi-weekly release sprints with continuous automated testing and 99.9% reliability.</p>
                 </div>
               </div>
 
               <div className="why-split-point-item">
-                <div className="orange-check-icon">
+                <div className="blue-check-icon">
                   <CheckCircle2 size={22} />
                 </div>
                 <div>
-                  <h4>Tailored to Your Needs</h4>
-                  <p>Every solution is customized to fit your unique goals and challenges.</p>
+                  <h4>Architected for High Concurrency</h4>
+                  <p>Every system is designed to handle millions of transactions with zero performance bottlenecks.</p>
+                </div>
+              </div>
+
+              <div className="why-split-point-item">
+                <div className="blue-check-icon">
+                  <CheckCircle2 size={22} />
+                </div>
+                <div>
+                  <h4>Modern Technology Stacks</h4>
+                  <p>React, Next.js, Flutter, Python, Go, Kubernetes, and enterprise cloud infrastructure.</p>
                 </div>
               </div>
             </div>
@@ -98,7 +115,7 @@ export default function ServicesPage({ onOpenContact, onSelectService }) {
         </div>
       </section>
 
-      {/* 4. Frequently Asked Questions with Left Box matching Screenshot 2 */}
+      {/* 4. Frequently Asked Questions */}
       <section className="services-faq-section">
         <div className="container section-padding">
           <div className="text-center max-w-700 reveal-on-scroll">
@@ -108,18 +125,18 @@ export default function ServicesPage({ onOpenContact, onSelectService }) {
             </div>
             <h2 className="section-title">Frequently Asked Questions</h2>
             <p className="section-subtitle">
-              We use modern, reliable technologies to craft fast, user-friendly digital experiences. Our stack is built for performance, scalability, and smooth development.
+              Have questions about timelines, technology selection, or engagement models? Here is everything you need to know about partnering with Inkore.
             </p>
           </div>
 
           <div className="services-faq-grid">
             {/* Left Box */}
             <div className="faq-left-cta-card reveal-on-scroll reveal-left">
-              <h3>Still Have More Questions?</h3>
+              <h3>Have Specific Requirements?</h3>
               <div className="faq-card-line"></div>
-              <p>If you’re curious or need more info, feel free to reach out — we’re here to help!</p>
+              <p>Our senior solution architects are available for a detailed technical consultation to review your architecture.</p>
               <button className="btn-ritovex-dark" onClick={onOpenContact}>
-                Contact Us Now
+                Contact Our Architects
               </button>
             </div>
 

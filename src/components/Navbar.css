@@ -1,12 +1,15 @@
 .navbar-header-ritovex {
   position: sticky;
   top: 0;
-  background: #ffffff;
-  border-bottom: 1px dashed #e2e8f0;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid #e2e8f0;
   z-index: 1000;
   height: 84px;
   display: flex;
   align-items: center;
+  transition: all 0.3s ease;
 }
 
 .navbar-container-ritovex {
@@ -18,26 +21,20 @@
 .navbar-logo-ritovex {
   display: flex;
   align-items: center;
-  gap: 10px;
-  color: #1a2332;
+  text-decoration: none;
 }
 
-.logo-cube-icon {
-  color: #2563EB;
-}
-
-.logo-text-ritovex {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: #2563EB;
+.navbar-brand-logo-img {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .navbar-links-ritovex {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 28px;
 }
 
 .nav-link-ritovex {
@@ -46,10 +43,11 @@
   color: #374151;
   position: relative;
   padding: 8px 0;
+  transition: color 0.2s ease;
 }
 
 .nav-link-ritovex.active {
-  color: #2563EB;
+  color: #2563eb;
   font-weight: 700;
 }
 
@@ -59,12 +57,13 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: #2563EB;
+  height: 2.5px;
+  background: #2563eb;
+  border-radius: 9999px;
 }
 
 .nav-link-ritovex:hover {
-  color: #2563EB;
+  color: #2563eb;
 }
 
 .navbar-right-ritovex {
@@ -73,32 +72,30 @@
   gap: 20px;
 }
 
-.cart-badge-ritovex {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #374151;
-  padding: 8px 14px;
-  border-radius: var(--radius-button);
-  background: #f3f4f6;
-  cursor: pointer;
-}
-
 .phone-contact-box {
   display: flex;
   align-items: center;
   gap: 12px;
   cursor: pointer;
+  padding: 6px 14px;
+  border-radius: 12px;
+  transition: background 0.2s ease;
+}
+
+.phone-contact-box:hover {
+  background: #f8fafc;
 }
 
 .phone-icon-box {
   width: 42px;
   height: 42px;
-  border-radius: var(--radius-button);
+  border-radius: 10px;
   background: #eff6ff;
+  color: #2563eb;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #2563EB;
+  border: 1px solid rgba(37, 99, 235, 0.15);
 }
 
 .phone-text-group {
@@ -108,46 +105,66 @@
 
 .phone-label {
   font-size: 0.72rem;
-  color: #6b7280;
-  font-weight: 600;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+  letter-spacing: 0.04em;
 }
 
 .phone-number {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 800;
   color: #111827;
 }
 
 .mobile-toggle-btn {
   display: none;
+  background: transparent;
+  border: none;
   color: #111827;
+  cursor: pointer;
 }
 
 .mobile-drawer-ritovex {
+  display: none;
   position: absolute;
-  top: 100%;
+  top: 84px;
   left: 0;
   right: 0;
   background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e2e8f0;
   padding: 24px;
-  display: flex;
   flex-direction: column;
   gap: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .mobile-drawer-ritovex a {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 700;
   color: #111827;
+  padding: 8px 0;
+}
+
+.mobile-drawer-ritovex a:hover {
+  color: #2563eb;
 }
 
 @media (max-width: 960px) {
-  .navbar-links-ritovex, .cart-badge-ritovex, .phone-contact-box {
+  .navbar-links-ritovex,
+  .phone-contact-box {
     display: none;
   }
   .mobile-toggle-btn {
     display: block;
+  }
+  .mobile-drawer-ritovex {
+    display: flex;
   }
 }

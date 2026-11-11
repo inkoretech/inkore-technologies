@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Mail, Phone, Globe, Code2, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, Globe, Code2, ArrowUpRight } from 'lucide-react';
 import './Footer.css';
 
 export default function Footer({ onOpenContact }) {
   const techPills = [
-    'Web', 'Mobile', 'Cloud', 'Enterprise', 'Automation', 'AI'
+    'Web Architecture', 'Mobile Apps', 'Cloud Infrastructure', 'Enterprise Systems', 'DevOps Automation', 'AI Integration'
   ];
 
   return (
@@ -16,12 +16,15 @@ export default function Footer({ onOpenContact }) {
           {/* Brand & Tagline Column */}
           <div className="footer-brand-col">
             <Link to="/" className="footer-brand-logo">
-              <Box size={28} className="logo-cube-icon" />
-              <span className="footer-logo-text">INKORE</span>
+              <img 
+                src="./assets/logo-white.png" 
+                alt="Inkore Technologies" 
+                className="footer-brand-logo-img"
+              />
             </Link>
 
             <p className="footer-brand-tagline">
-              Build what matters.
+              Engineering Digital Excellence.
             </p>
 
             <div className="footer-tech-chips-bar">
@@ -34,50 +37,51 @@ export default function Footer({ onOpenContact }) {
             </div>
           </div>
 
-          {/* Column 1: Company */}
+          {/* Column 1: Company Navigation */}
           <div className="footer-col-ritovex">
-            <h4 className="footer-col-head">Company</h4>
+            <h4 className="footer-col-head">Navigation</h4>
             <ul className="footer-col-links">
+              <li><Link to="/">Home</Link></li>
               <li><Link to="/about">About Us</Link></li>
               <li><Link to="/services">Services</Link></li>
-              <li><Link to="/services">Technologies</Link></li>
-              <li><a href="#contact" onClick={(e) => { e.preventDefault(); onOpenContact(); }}>Careers</a></li>
+              <li><Link to="/work">Work / Portfolio</Link></li>
+              <li><Link to="/estimate">Cost Estimator</Link></li>
               <li><Link to="/contact">Contact</Link></li>
             </ul>
           </div>
 
-          {/* Column 2: Services */}
+          {/* Column 2: Capabilities */}
           <div className="footer-col-ritovex">
-            <h4 className="footer-col-head">Services</h4>
+            <h4 className="footer-col-head">Capabilities</h4>
             <ul className="footer-col-links">
-              <li><Link to="/services">Web Development</Link></li>
-              <li><Link to="/services">Mobile Development</Link></li>
-              <li><Link to="/services">Custom Software</Link></li>
-              <li><Link to="/services">Cloud & DevOps</Link></li>
-              <li><Link to="/services">AI & Automation</Link></li>
-              <li><Link to="/services">API Development</Link></li>
+              <li><Link to="/services">Web Application Development</Link></li>
+              <li><Link to="/services">Mobile App Engineering</Link></li>
+              <li><Link to="/services">Custom Software Architecture</Link></li>
+              <li><Link to="/services">Cloud & DevOps Infrastructure</Link></li>
+              <li><Link to="/services">AI Integration & Automation</Link></li>
+              <li><Link to="/services">High-Throughput APIs</Link></li>
             </ul>
           </div>
 
           {/* Column 3: Contact */}
           <div className="footer-col-ritovex">
-            <h4 className="footer-col-head">Contact</h4>
+            <h4 className="footer-col-head">Direct Contact</h4>
             <ul className="footer-contact-items">
               <li>
                 <Mail size={16} />
-                <a href="mailto:hello@inkoretech.com">Email Us</a>
+                <a href="mailto:hello@inkoretech.com">hello@inkoretech.com</a>
               </li>
               <li>
                 <Phone size={16} />
-                <a href="tel:+18004656738">Phone Support</a>
+                <a href="tel:+18004656738">+1 (800) 465-6738</a>
               </li>
               <li>
                 <Globe size={16} />
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+                <a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn Corporate</a>
               </li>
               <li>
                 <Code2 size={16} />
-                <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+                <a href="https://github.com" target="_blank" rel="noreferrer">GitHub Open Source</a>
               </li>
             </ul>
           </div>
@@ -97,4 +101,3 @@ export default function Footer({ onOpenContact }) {
     </footer>
   );
 }
-
