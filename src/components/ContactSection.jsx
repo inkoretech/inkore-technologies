@@ -209,7 +209,7 @@ export default function ContactSection({ initialService, initialMessage, isModal
                 <div className="method-icon"><Phone size={22} /></div>
                 <div>
                   <span className="method-label">Direct Phone / WhatsApp</span>
-                  <a href="tel:+18004656738" className="method-val">+1 (800) 465-6738</a>
+                  <a href="tel:+917012666848" className="method-val">+91 70126 66848</a>
                 </div>
               </div>
 
@@ -217,7 +217,7 @@ export default function ContactSection({ initialService, initialMessage, isModal
                 <div className="method-icon"><MapPin size={22} /></div>
                 <div>
                   <span className="method-label">Headquarters</span>
-                  <span className="method-val">Innovation Tech Park, Suite 700, CA</span>
+                  <span className="method-val">Kochi, Kerala, India</span>
                 </div>
               </div>
             </div>

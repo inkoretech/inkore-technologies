@@ -1,20 +1,17 @@
 import React from 'react';
 import { MapPin, PhoneCall, Mail } from 'lucide-react';
 import LetsTalk from './LetsTalk';
+import PageHero from './PageHero';
 import './ContactUsPage.css';
 
 export default function ContactUsPage({ onOpenContact }) {
   return (
     <div className="contact-page-wrapper">
       {/* 1. Contact Us Hero Header matching Screenshot 1 */}
-      <section className="contact-hero-section">
-        <div className="container text-left reveal-on-scroll">
-          <h1 className="contact-hero-title">Contact Us</h1>
-          <p className="contact-hero-subtitle">
-            Whether you need a custom web application, mobile app engineering, or cloud architecture consultation, our team is ready to help transform your vision into reality.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title="Contact Us"
+        subtitle="Whether you need a custom web application, mobile app engineering, or cloud architecture consultation, our team is ready to help transform your vision into reality."
+      />
 
       {/* 2. Let's Start Talk Form Component */}
       <LetsTalk />
@@ -31,8 +28,8 @@ export default function ContactUsPage({ onOpenContact }) {
               <div className="info-card-divider"></div>
               <h3 className="info-card-title">Our Address</h3>
               <p className="info-card-text">
-                Innovation Tech Park, Suite 700, <br />
-                San Francisco, CA
+                Kochi, Kerala, <br />
+                India
               </p>
             </div>
 
@@ -44,7 +41,7 @@ export default function ContactUsPage({ onOpenContact }) {
               <div className="info-card-divider"></div>
               <h3 className="info-card-title">Phone</h3>
               <p className="info-card-text">
-                +1 (800) 465-6738
+                +91 70126 66848
               </p>
             </div>
 

@@ -1,226 +1,202 @@
-import React, { useState } from 'react';
-import { 
-  Sparkles, 
-  ExternalLink, 
-  ArrowRight, 
-  CheckCircle2, 
-  X, 
-  Layers, 
-  TrendingUp,
-  Globe,
-  Smartphone
-} from 'lucide-react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ArrowUpRight, CheckCircle2, X, TrendingUp } from 'lucide-react';
 import './Portfolio.css';
 
+gsap.registerPlugin(ScrollTrigger);
+
+const categories = ['All', 'Web Apps', 'Mobile Apps', 'Cloud & AI'];
+
+const projects = [
+  {
+    id: 'nova-health',
+    subtitle: 'Next.js 14, Node.js, WebRTC, PostgreSQL',
+    category: 'Web Apps',
+    title: 'NovaHealth Telemedicine SaaS',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
+    impact: '2.5M Patient Visits',
+    description: 'End-to-end cloud platform for healthcare providers enabling encrypted video consultations, electronic health records (EHR), and automated appointment scheduling.',
+    results: ['99.99% uptime SLA across multi-region AWS cloud', 'HIPAA & GDPR fully compliant architecture', 'Reduced patient waiting times by 65%'],
+    techs: ['Next.js 14', 'Node.js', 'WebRTC', 'AWS ECS', 'PostgreSQL'],
+  },
+  {
+    id: 'finflow-mobile',
+    subtitle: 'Flutter, iOS/Android, Firebase, Plaid API',
+    category: 'Mobile Apps',
+    title: 'FinFlow Global Payment App',
+    image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80',
+    impact: '$45M Monthly Volume',
+    description: 'Cross-platform mobile banking app providing instant peer-to-peer transfers, multi-currency accounts, and automated AI spending analytics.',
+    results: ['4.9 / 5.0 rating on Apple App Store & Google Play', 'Sub-100ms transaction execution speeds', 'Over 350,000 active monthly users'],
+    techs: ['Flutter', 'Dart', 'Firebase', 'Plaid API', 'Stripe Connect'],
+  },
+  {
+    id: 'logitrack-ai',
+    subtitle: 'Python, TensorFlow, React, Docker, GCP',
+    category: 'Cloud & AI',
+    title: 'LogiTrack AI Fleet Logistics',
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80',
+    impact: '-28% Fuel Costs',
+    description: 'Enterprise AI platform tracking 85,000 delivery vehicles worldwide with real-time GPS telemetry, route optimization, and driver safety alerts.',
+    results: ['Saved 2.4 million gallons of fuel in Year 1', 'Predictive vehicle maintenance alert accuracy >94%', 'Seamless integration with SAP and Oracle ERPs'],
+    techs: ['Python', 'TensorFlow', 'React', 'Kubernetes', 'Google Cloud'],
+  },
+  {
+    id: 'veloce-store',
+    subtitle: 'React, Shopify Storefront API, GraphQL',
+    category: 'Web Apps',
+    title: 'Veloce High-Speed E-Commerce',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+    impact: '+310% Sales Conversion',
+    description: 'Headless e-commerce web platform engineered for luxury apparel brand, featuring 0.3s page transitions and instant localized checkout.',
+    results: ['100/100 Mobile Lighthouse speed benchmark score', '+310% checkout conversion rate uplift post-launch', 'Handled 45,000 concurrent users during Black Friday sale'],
+    techs: ['React', 'Shopify Storefront', 'GraphQL', 'Vercel Edge'],
+  },
+  {
+    id: 'apex-pay',
+    subtitle: 'Swift, Kotlin, Native NFC, Web3 SDK',
+    category: 'Mobile Apps',
+    title: 'Apex Pay NFC Mobile Wallet',
+    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80',
+    impact: '500k Downloads',
+    description: 'Native iOS & Android digital wallet supporting contactless tap-to-pay, loyalty card digitization, and instant crypto-to-fiat conversion.',
+    results: ['Awarded Best Mobile UI/UX Design 2025', 'Zero security breaches across 10M+ transactions', '98% user onboarding completion rate'],
+    techs: ['Swift', 'Kotlin', 'NFC Hardware', 'AWS KMS'],
+  },
+  {
+    id: 'cybershield',
+    subtitle: 'Go, Python, Machine Learning, AWS',
+    category: 'Cloud & AI',
+    title: 'CyberShield Autonomous SOC',
+    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80',
+    impact: '99.8% Threat Accuracy',
+    description: 'Autonomous cyber security intelligence center analyzing gigabytes of enterprise log traffic per second for zero-day threat detection.',
+    results: ['Automated response to 94% of suspicious network anomalies', 'Reduced incident containment time from 6 hours to 45 seconds', 'Deployed across 30 Fortune 500 corporate IT networks'],
+    techs: ['Go', 'Python', 'Kafka', 'ElasticSearch', 'AWS S3'],
+  },
+];
+
 export default function Portfolio() {
-  const [activeCategory, setActiveCategory] = useState('All');
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [cat, setCat] = useState('All');
+  const [selected, setSelected] = useState(null);
+  const stackRef = useRef(null);
 
-  const categories = ['All', 'Web Apps', 'Mobile Apps', 'Cloud & AI'];
+  const list = cat === 'All' ? projects : projects.filter((p) => p.category === cat);
 
-  const projects = [
-    {
-      id: 'nova-health',
-      category: 'Web Apps',
-      title: 'NovaHealth Telemedicine SaaS',
-      subtitle: 'Next.js 14, Node.js, WebRTC, PostgreSQL',
-      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
-      impact: '2.5M Patient Visits',
-      description: 'End-to-end cloud platform for healthcare providers enabling encrypted video consultations, electronic health records (EHR), and automated appointment scheduling.',
-      results: [
-        '99.99% uptime SLA across multi-region AWS cloud',
-        'HIPAA & GDPR fully compliant architecture',
-        'Reduced patient waiting times by 65%'
-      ],
-      techs: ['Next.js 14', 'Node.js', 'WebRTC', 'AWS ECS', 'PostgreSQL']
-    },
-    {
-      id: 'finflow-mobile',
-      category: 'Mobile Apps',
-      title: 'FinFlow Global Payment App',
-      subtitle: 'Flutter, iOS/Android, Firebase, Plaid API',
-      image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80',
-      impact: '$45M Monthly Volume',
-      description: 'Cross-platform mobile banking app providing instant peer-to-peer transfers, multi-currency accounts, and automated AI spending analytics.',
-      results: [
-        '4.9 / 5.0 rating on Apple App Store & Google Play',
-        'Sub-100ms transaction execution speeds',
-        'Over 350,000 active monthly users'
-      ],
-      techs: ['Flutter', 'Dart', 'Firebase', 'Plaid API', 'Stripe Connect']
-    },
-    {
-      id: 'logitrack-ai',
-      category: 'Cloud & AI',
-      title: 'LogiTrack AI Fleet Logistics',
-      subtitle: 'Python, TensorFlow, React, Docker, GCP',
-      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80',
-      impact: '-28% Fuel Costs',
-      description: 'Enterprise AI platform tracking 85,000 delivery vehicles worldwide with real-time GPS telemetry, route optimization, and driver safety alerts.',
-      results: [
-        'Saved 2.4 million gallons of fuel in Year 1',
-        'Predictive vehicle maintenance alert accuracy >94%',
-        'Seamless integration with SAP and Oracle ERPs'
-      ],
-      techs: ['Python', 'TensorFlow', 'React', 'Kubernetes', 'Google Cloud']
-    },
-    {
-      id: 'veloce-store',
-      category: 'Web Apps',
-      title: 'Veloce High-Speed E-Commerce',
-      subtitle: 'React, Shopify Storefront API, GraphQL',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
-      impact: '+310% Sales Conversion',
-      description: 'Headless e-commerce web platform engineered for luxury apparel brand, featuring 0.3s page transitions and instant localized checkout.',
-      results: [
-        '100/100 Mobile Lighthouse speed benchmark score',
-        '+310% checkout conversion rate uplift post-launch',
-        'Handled 45,000 concurrent users during Black Friday sale'
-      ],
-      techs: ['React', 'Shopify Storefront', 'GraphQL', 'Vercel Edge']
-    },
-    {
-      id: 'apex-pay',
-      category: 'Mobile Apps',
-      title: 'Apex Pay NFC Mobile Wallet',
-      subtitle: 'Swift, Kotlin, Native NFC, Web3 SDK',
-      image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80',
-      impact: '500k Downloads',
-      description: 'Native iOS & Android digital wallet supporting contactless tap-to-pay, loyalty card digitization, and instant crypto-to-fiat conversion.',
-      results: [
-        'Awarded Best Mobile UI/UX Design 2025',
-        'Zero security breaches across 10M+ transactions',
-        '98% user onboarding completion rate'
-      ],
-      techs: ['Swift', 'Kotlin', 'NFC Hardware', 'AWS KMS']
-    },
-    {
-      id: 'cybershield',
-      category: 'Cloud & AI',
-      title: 'CyberShield Autonomous SOC',
-      subtitle: 'Go, Python, Machine Learning, AWS',
-      image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80',
-      impact: '99.8% Threat Accuracy',
-      description: 'Autonomous cyber security intelligence center analyzing gigabytes of enterprise log traffic per second for zero-day threat detection.',
-      results: [
-        'Automated response to 94% of suspicious network anomalies',
-        'Reduced incident containment time from 6 hours to 45 seconds',
-        'Deployed across 30 Fortune 500 corporate IT networks'
-      ],
-      techs: ['Go', 'Python', 'Kafka', 'ElasticSearch', 'AWS S3']
-    }
-  ];
-
-  const filteredProjects = activeCategory === 'All' 
-    ? projects 
-    : projects.filter(p => p.category === activeCategory);
+  // Stacking cards: each card shrinks and dims as the next one slides over it
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        const items = gsap.utils.toArray('.stack-item');
+        items.forEach((item, i) => {
+          const next = items[i + 1];
+          if (!next) return;
+          const card = item.querySelector('.work-card');
+          gsap.to(card, {
+            scale: 0.92,
+            filter: 'brightness(0.6)',
+            ease: 'none',
+            scrollTrigger: {
+              trigger: next,
+              start: 'top 65%',
+              end: 'top top+=140',
+              scrub: 0.3,
+            },
+          });
+        });
+        gsap.from('.work-card__media img', {
+          scale: 1.25,
+          ease: 'none',
+          stagger: 0,
+          scrollTrigger: { trigger: stackRef.current, start: 'top bottom', end: 'bottom top', scrub: true },
+        });
+      });
+    }, stackRef);
+    ScrollTrigger.refresh();
+    return () => ctx.revert();
+  }, [cat]);
 
   return (
-    <section className="section-padding portfolio-section" id="portfolio">
-      <div className="container">
-        <div className="section-header">
-          <div className="pill-badge">
-            <Sparkles size={14} />
-            <span>Case Studies & Portfolio</span>
+    <section className="work" id="portfolio" data-nav="dark">
+      <div className="container section-padding work__inner">
+        <div className="section-head">
+          <div>
+            <span className="eyebrow on-dark reveal-on-scroll">Case Studies &amp; Portfolio</span>
+            <h2 className="display">
+              <span className="line-mask"><span>Engineering Success for</span></span>
+              <span className="line-mask"><span className="accent">Market Leaders</span></span>
+            </h2>
           </div>
-          <h2>
-            Engineering Success for <span className="gradient-text">Market Leaders</span>
-          </h2>
-          <p>
+          <p data-split>
             Explore a selection of web applications, mobile platforms, and enterprise solutions designed and built by Inkore Technologies.
           </p>
         </div>
 
-        {/* Category Filters */}
-        <div className="portfolio-filters">
-          {categories.map((cat) => (
+        <div className="work__filters reveal-on-scroll" role="tablist">
+          {categories.map((c) => (
             <button
-              key={cat}
-              className={`filter-btn ${activeCategory === cat ? 'active' : ''}`}
-              onClick={() => setActiveCategory(cat)}
+              key={c}
+              role="tab"
+              aria-selected={cat === c}
+              className={`work__filter mono ${cat === c ? 'is-active' : ''}`}
+              onClick={() => setCat(c)}
             >
-              {cat}
+              {c}
             </button>
           ))}
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid-3 portfolio-grid">
-          {filteredProjects.map((project) => (
-            <div 
-              key={project.id} 
-              className="glass-card project-card"
-              onClick={() => setSelectedProject(project)}
-            >
-              <div className="project-image-wrapper">
-                <img src={project.image} alt={project.title} className="project-image" loading="lazy" />
-                <div className="project-overlay">
-                  <span className="view-case-btn">View Case Study</span>
+        <div className="work__stack" ref={stackRef}>
+          {list.map((p, i) => (
+            <div key={p.id} className="stack-item" style={{ '--i': i }}>
+              <article className="work-card" onClick={() => setSelected(p)}>
+                <div className="work-card__media">
+                  <img src={p.image} alt={p.title} loading="lazy" />
                 </div>
-                <div className="project-impact-badge">
-                  <TrendingUp size={13} />
-                  <span>{project.impact}</span>
+                <span className="work-card__impact mono"><TrendingUp size={12} /> {p.impact}</span>
+                <span className="work-card__index mono">{String(i + 1).padStart(2, '0')} / {String(list.length).padStart(2, '0')}</span>
+                <div className="work-card__body">
+                  <span className="mono work-card__industry">{p.category}</span>
+                  <h3>{p.title}</h3>
+                  <p className="work-card__sub">{p.subtitle}</p>
+                  <div className="work-card__foot">
+                    <div className="work-card__chips">
+                      {p.techs.slice(0, 3).map((t) => <span key={t} className="chip on-dark">{t}</span>)}
+                    </div>
+                    <span className="work-card__view mono">View Case Study <ArrowUpRight size={15} /></span>
+                  </div>
                 </div>
-              </div>
-
-              <div className="project-card-body">
-                <span className="project-category">{project.category}</span>
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-subtitle">{project.subtitle}</p>
-
-                <div className="project-tech-chips">
-                  {project.techs.slice(0, 3).map((t, idx) => (
-                    <span key={idx} className="tech-tag">{t}</span>
-                  ))}
-                </div>
-              </div>
+              </article>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Project Detail Modal */}
-      {selectedProject && (
-        <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
-          <div className="modal-content glass-card project-modal animate-scale-up" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close-btn" onClick={() => setSelectedProject(null)}>
-              <X size={20} />
-            </button>
-
-            <div className="project-modal-hero">
-              <img src={selectedProject.image} alt={selectedProject.title} className="project-modal-img" />
-              <div className="project-modal-badge">{selectedProject.impact}</div>
+      {selected && (
+        <div className="modal-overlay" data-lenis-prevent onClick={() => setSelected(null)}>
+          <div className="modal-content work-modal" role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close-btn" onClick={() => setSelected(null)} aria-label="Close"><X size={18} /></button>
+            <div className="work-modal__hero">
+              <img src={selected.image} alt={selected.title} />
+              <span className="work-card__impact mono"><TrendingUp size={12} /> {selected.impact}</span>
             </div>
-
-            <div className="project-modal-body">
-              <span className="project-category">{selectedProject.category}</span>
-              <h2 className="modal-title">{selectedProject.title}</h2>
-              <p className="modal-description">{selectedProject.description}</p>
-
-              <div className="modal-section-block">
-                <h4 className="modal-subheading">Key Results & Achievements</h4>
-                <div className="modal-feature-list">
-                  {selectedProject.results.map((res, idx) => (
-                    <div key={idx} className="modal-feature-item">
-                      <CheckCircle2 size={18} className="feat-check" />
-                      <span>{res}</span>
-                    </div>
-                  ))}
-                </div>
+            <div className="work-modal__body">
+              <span className="eyebrow">{selected.category}</span>
+              <h2 className="modal-title">{selected.title}</h2>
+              <p className="modal-description">{selected.description}</p>
+              <p className="modal-label">Key Results &amp; Achievements</p>
+              <ul className="work-modal__results">
+                {selected.results.map((r) => (
+                  <li key={r}><CheckCircle2 size={17} /> {r}</li>
+                ))}
+              </ul>
+              <p className="modal-label">Technologies Used</p>
+              <div className="modal-chips">
+                {selected.techs.map((t) => <span key={t} className="chip">{t}</span>)}
               </div>
-
-              <div className="modal-section-block">
-                <h4 className="modal-subheading">Technologies Used</h4>
-                <div className="service-tech-list">
-                  {selectedProject.techs.map((t, idx) => (
-                    <span key={idx} className="tech-tag large">{t}</span>
-                  ))}
-                </div>
-              </div>
-
-              <button className="btn-primary width-100" onClick={() => setSelectedProject(null)}>
-                <span>Close Case Study</span>
-              </button>
+              <button className="btn btn-ink" onClick={() => setSelected(null)}>Close Case Study</button>
             </div>
           </div>
         </div>

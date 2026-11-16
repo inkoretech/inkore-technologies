@@ -1,153 +1,135 @@
-.navbar-header-ritovex {
-  position: sticky;
-  top: 0;
-  background: #ffffff;
-  border-bottom: 1px dashed #e2e8f0;
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
   z-index: 1000;
-  height: 84px;
-  display: flex;
-  align-items: center;
+  height: var(--header-h);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+.nav--scrolled {
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom-color: var(--line);
+  box-shadow: 0 8px 30px -18px rgba(26, 35, 50, 0.25);
 }
 
-.navbar-container-ritovex {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+.nav__inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 
-.navbar-logo-ritovex {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #111827;
-}
-
-.logo-cube-icon {
-  color: #111827;
-}
-
-.logo-text-ritovex {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: #111827;
-}
-
-.navbar-links-ritovex {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-}
-
-.nav-link-ritovex {
-  font-size: 0.95rem;
+.nav__brand { display: flex; align-items: center; gap: 12px; }
+.nav__brand img { height: 30px; width: auto; }
+.nav__brand-tag {
+  padding-left: 12px;
+  border-left: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
   font-weight: 600;
-  color: #374151;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.nav__links { display: flex; align-items: center; gap: 4px; }
+.nav__link {
   position: relative;
-  padding: 8px 0;
+  padding: 8px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-2);
 }
-
-.nav-link-ritovex.active {
-  color: #111827;
-  font-weight: 700;
-}
-
-.nav-link-ritovex.active::after {
+.nav__link::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: #111827;
+  left: 14px; right: 14px; bottom: 2px;
+  height: 1.5px;
+  background: var(--blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease);
 }
+.nav__link:hover { color: var(--ink); }
+.nav__link:hover::after,
+.nav__link.is-active::after { transform: scaleX(1); }
+.nav__link.is-active { color: var(--ink); }
 
-.nav-link-ritovex:hover {
-  color: #111827;
-}
+.nav__right { display: flex; align-items: center; gap: 10px; }
+.nav__phone { display: flex; align-items: center; gap: 10px; text-align: left; padding: 6px 16px 6px 6px; border-radius: var(--radius-pill); border: 1px solid var(--line); background: #fff; transition: border-color 0.3s, box-shadow 0.3s; }
+.nav__phone:hover { border-color: var(--blue); box-shadow: 0 8px 20px -12px rgba(37, 99, 235, 0.6); }
+.nav__phone-icon { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--blue); color: #fff; }
+.nav__phone-text { display: flex; flex-direction: column; line-height: 1.2; }
+.nav__phone-text .mono { font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-3); }
+.nav__phone-text strong { font-family: var(--font-display); font-size: 0.9rem; color: var(--ink); }
 
-.navbar-right-ritovex {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.cart-badge-ritovex {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #374151;
-  padding: 8px 14px;
-  border-radius: var(--radius-button);
-  background: #f3f4f6;
-  cursor: pointer;
-}
-
-.phone-contact-box {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;
-}
-
-.phone-icon-box {
-  width: 42px;
-  height: 42px;
-  border-radius: var(--radius-button);
-  background: #f3f4f6;
-  display: flex;
+.nav__toggle {
+  display: none;
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
   align-items: center;
   justify-content: center;
-  color: #111827;
+  color: var(--ink);
 }
 
-.phone-text-group {
+.nav__drawer {
+  position: fixed;
+  top: var(--header-h);
+  left: 0; right: 0; bottom: 0;
+  background: var(--paper);
+  padding: 20px 0 40px;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s, transform 0.4s var(--ease), visibility 0.3s;
+}
+.nav__drawer.is-open { opacity: 1; visibility: visible; transform: none; }
+.nav__drawer-link {
   display: flex;
-  flex-direction: column;
-}
-
-.phone-label {
-  font-size: 0.72rem;
-  color: #6b7280;
-  font-weight: 600;
-}
-
-.phone-number {
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: #111827;
-}
-
-.mobile-toggle-btn {
-  display: none;
-  color: #111827;
-}
-
-.mobile-drawer-ritovex {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+.nav__drawer-link .mono { font-size: 0.72rem; color: var(--blue); letter-spacing: 0.1em; }
+.nav__drawer-link svg { margin-left: auto; color: var(--text-3); }
+.nav__drawer-link.is-active { color: var(--blue); }
+.nav__drawer-cta { width: 100%; margin-top: 28px; }
+
+@media (max-width: 1080px) {
+  .nav__links { display: none; }
+  .nav__toggle { display: inline-flex; }
+}
+@media (max-width: 560px) {
+  .nav__phone-text { display: none; }
+  .nav__phone { padding: 4px; }
 }
 
-.mobile-drawer-ritovex a {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #111827;
-}
+/* Logo swap + dark theme while over dark sections */
+.nav__logo { height: 30px; width: auto; transition: opacity 0.35s; }
+.nav__brand { position: relative; }
+.nav__logo--light { position: absolute; left: 0; top: 50%; transform: translateY(-50%); opacity: 0; }
+.nav { transition: border-color 0.3s, background 0.45s var(--ease), box-shadow 0.3s; }
+.nav__link, .nav__toggle, .nav__phone, .nav__phone-text strong, .nav__phone-text .mono { transition: color 0.35s, background 0.35s, border-color 0.35s; }
 
-@media (max-width: 960px) {
-  .navbar-links-ritovex, .cart-badge-ritovex, .phone-contact-box {
-    display: none;
-  }
-  .mobile-toggle-btn {
-    display: block;
-  }
-}
+body.nav-on-dark .nav { background: rgba(15, 22, 34, 0.72); border-bottom-color: rgba(255, 255, 255, 0.08); box-shadow: none; }
+body.nav-on-dark .nav__logo--dark { opacity: 0; }
+body.nav-on-dark .nav__logo--light { opacity: 1; }
+body.nav-on-dark .nav__link { color: rgba(255, 255, 255, 0.7); }
+body.nav-on-dark .nav__link:hover,
+body.nav-on-dark .nav__link.is-active { color: #fff; }
+body.nav-on-dark .nav__link::after { background: var(--blue-bright); }
+body.nav-on-dark .nav__phone,
+body.nav-on-dark .nav__toggle { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.14); color: #fff; }
+body.nav-on-dark .nav__phone-text strong { color: #fff; }
+body.nav-on-dark .nav__phone-text .mono { color: rgba(255, 255, 255, 0.55); }

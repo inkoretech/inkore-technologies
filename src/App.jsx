@@ -4,28 +4,51 @@ import Navbar from './components/Navbar';
 import HomePage from './components/HomePage';
 import AboutUsPage from './components/AboutUsPage';
 import ServicesPage from './components/ServicesPage';
+import WorkPage from './components/WorkPage';
 import ContactUsPage from './components/ContactUsPage';
 import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 import ScrollToTop from './components/ScrollToTop';
-import LetsTalk from './components/LetsTalk';
 import { useScrollReveal } from './hooks/useScrollReveal';
+import { useParallax } from './hooks/useParallax';
+import { useSmoothScroll, smoothScrollTo } from './hooks/useSmoothScroll';
+import { useGsapScroll } from './hooks/useGsapScroll';
+import { SELECT_SERVICE_EVENT } from './components/LetsTalk';
 
 function AppContent() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [selectedServiceForForm, setSelectedServiceForForm] = useState('');
 
   // Enable continuous scroll reveal loading animations across all sections
+  useSmoothScroll();
   useScrollReveal();
+  useParallax();
+  useGsapScroll();
 
   const handleSelectServiceForQuote = (serviceName) => {
     setSelectedServiceForForm(serviceName);
     setIsContactModalOpen(true);
+    // Preselect the service in the contact form and bring it into view
+    const announce = () => window.dispatchEvent(new CustomEvent(SELECT_SERVICE_EVENT, { detail: serviceName }));
+    const contactElem = document.getElementById('contact');
+    if (contactElem) {
+      announce();
+      smoothScrollTo(contactElem);
+    } else {
+      window.location.hash = '#/contact';
+      setTimeout(announce, 150);
+    }
   };
 
   const handleOpenGeneralContact = () => {
     setSelectedServiceForForm('');
-    setIsContactModalOpen(true);
+    // Smooth scroll to contact form if present or navigate to /contact
+    const contactElem = document.getElementById('contact');
+    if (contactElem) {
+      smoothScrollTo(contactElem);
+    } else {
+      window.location.hash = '#/contact';
+    }
   };
 
   return (
@@ -50,7 +73,7 @@ function AppContent() {
             } 
           />
 
-          {/* Standalone About Us Page Route matching Screenshots 1, 2, 3, 4 */}
+          {/* Standalone About Us Page Route */}
           <Route 
             path="/about" 
             element={
@@ -61,7 +84,7 @@ function AppContent() {
             } 
           />
 
-          {/* Dedicated Services Page Route matching Screenshots 1, 2, 3, 4 */}
+          {/* Dedicated Services Page Route */}
           <Route 
             path="/services" 
             element={
@@ -72,7 +95,17 @@ function AppContent() {
             } 
           />
 
-          {/* Dedicated Contact Us Page Route matching Screenshots 1 & 2 */}
+          {/* Dedicated Work / Portfolio Page Route */}
+          <Route 
+            path="/work" 
+            element={
+              <WorkPage 
+                onOpenContact={handleOpenGeneralContact} 
+              />
+            } 
+          />
+
+          {/* Dedicated Contact Us Page Route */}
           <Route 
             path="/contact" 
             element={
@@ -95,7 +128,7 @@ function AppContent() {
         </Routes>
       </main>
 
-      {/* Footer matching Screenshot 4 */}
+      {/* Footer */}
       <Footer onOpenContact={handleOpenGeneralContact} />
     </div>
   );

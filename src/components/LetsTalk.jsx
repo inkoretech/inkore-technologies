@@ -1,18 +1,36 @@
-import React, { useState } from 'react';
-import { Box, Send, PhoneCall, Mail, MapPin, CheckCircle, ShieldCheck } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Send, PhoneCall, Mail, MapPin, CheckCircle, ShieldCheck } from 'lucide-react';
+import { servicesList } from './Services';
 import './LetsTalk.css';
+
+export const SERVICE_OPTIONS = servicesList.map((s) => s.title);
+
+export const SELECT_SERVICE_EVENT = 'inkore:select-service';
 
 export default function LetsTalk() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    service: 'Web Development',
-    message: ''
+    service: SERVICE_OPTIONS[0],
+    message: '',
   });
-
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+
+  // Let a service's "Request Quote" button preselect the service here
+  useEffect(() => {
+    const onSelect = (e) => {
+      if (e.detail && SERVICE_OPTIONS.includes(e.detail)) {
+        setFormData((f) => ({ ...f, service: e.detail }));
+        setSubmitted(false);
+      }
+    };
+    window.addEventListener(SELECT_SERVICE_EVENT, onSelect);
+    return () => window.removeEventListener(SELECT_SERVICE_EVENT, onSelect);
+  }, []);
+
+  const update = (k) => (e) => setFormData({ ...formData, [k]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,145 +42,87 @@ export default function LetsTalk() {
   };
 
   return (
-    <section className="lets-talk-section-ritovex" id="contact">
+    <section className="talk" id="contact">
       <div className="container section-padding">
-        <div className="lets-talk-grid-ritovex">
-          {/* Left Text & Contact Info */}
-          <div className="lets-talk-info reveal-on-scroll reveal-left">
-            <div className="badge-pill">
-              <Box size={14} />
-              <span>Let's Build</span>
-            </div>
+        <div className="talk__panel reveal-on-scroll reveal-scale">
+          <div className="dot-grid talk__dots" aria-hidden="true" />
 
-            <h2 className="lets-talk-heading">
-              Have an idea? <br />
-              Let's build it.
+          <div className="talk__info">
+            <span className="eyebrow on-dark">Let&apos;s Build</span>
+            <h2 className="display talk__title">
+              Have an idea?
+              <span className="serif-accent">Let&apos;s build it.</span>
             </h2>
-
-            <p className="lets-talk-subtitle">
-              Whether you're starting a new product, improving an existing system, or looking to automate your business, Inkore can help turn your requirements into technology that delivers.
+            <p className="talk__lead" data-split>
+              Whether you&apos;re starting a new product, improving an existing system, or looking to automate your business, Inkore can help turn your requirements into technology that delivers.
             </p>
+            <p className="talk__callout mono">Let&apos;s talk about your project.</p>
 
-            <div className="cta-action-callout">
-              <span>Let's talk about your project.</span>
-            </div>
-
-            <div className="lets-talk-contact-list">
-              <div className="talk-contact-card reveal-on-scroll delay-1">
-                <div className="talk-icon-box"><Mail size={20} /></div>
-                <div>
-                  <span className="talk-label">Email Us</span>
-                  <a href="mailto:hello@inkoretech.com" className="talk-val">hello@inkoretech.com</a>
-                </div>
-              </div>
-
-              <div className="talk-contact-card reveal-on-scroll delay-2">
-                <div className="talk-icon-box"><PhoneCall size={20} /></div>
-                <div>
-                  <span className="talk-label">Call Any Time</span>
-                  <a href="tel:+18004656738" className="talk-val">+1 (800) 465-6738</a>
-                </div>
-              </div>
-
-              <div className="talk-contact-card reveal-on-scroll delay-3">
-                <div className="talk-icon-box"><MapPin size={20} /></div>
-                <div>
-                  <span className="talk-label">Headquarters</span>
-                  <span className="talk-val">Innovation Tech Park, CA</span>
-                </div>
-              </div>
-            </div>
+            <ul className="talk__contacts">
+              <li>
+                <span className="talk__icon"><Mail size={16} /></span>
+                <div><span className="mono">Email Us</span><a href="mailto:hello@inkoretech.com">hello@inkoretech.com</a></div>
+              </li>
+              <li>
+                <span className="talk__icon"><PhoneCall size={16} /></span>
+                <div><span className="mono">Call Any Time</span><a href="tel:+917012666848">+91 70126 66848</a></div>
+              </li>
+              <li>
+                <span className="talk__icon"><MapPin size={16} /></span>
+                <div><span className="mono">Headquarters</span><span>Kochi, Kerala, India</span></div>
+              </li>
+            </ul>
           </div>
 
-          {/* Right Form Card */}
-          <div className="lets-talk-form-card reveal-on-scroll reveal-right delay-2">
+          <div className="talk__form-wrap">
             {submitted ? (
-              <div className="talk-success-box">
-                <div className="talk-success-icon"><CheckCircle size={44} /></div>
+              <div className="talk__success">
+                <CheckCircle size={44} />
                 <h3>Message Sent Successfully!</h3>
-                <p>Thank you <strong>{formData.name}</strong>. Our engineering team will review your inquiry and get back to you within 2 business hours.</p>
-                <button className="btn-ritovex-dark" onClick={() => setSubmitted(false)}>
+                <p>
+                  Thank you <strong>{formData.name}</strong>. Our engineering team will review your inquiry and get back to you within 2 business hours.
+                </p>
+                <button className="btn btn-ghost-light" onClick={() => setSubmitted(false)}>
                   Send Another Message
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="talk-form">
-                <h3 className="talk-form-title">Send Us a Message</h3>
+              <form className="talk__form" onSubmit={handleSubmit}>
+                <h3 className="talk__form-title">Send Us a Message</h3>
 
-                <div className="talk-form-group">
-                  <label className="talk-form-label">Full Name *</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="John Doe"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="talk-form-input"
-                  />
+                <label className="talk__field">
+                  <span className="mono">Full Name *</span>
+                  <input required placeholder="John Doe" value={formData.name} onChange={update('name')} />
+                </label>
+
+                <div className="talk__row">
+                  <label className="talk__field">
+                    <span className="mono">Email Address *</span>
+                    <input required type="email" placeholder="john@company.com" value={formData.email} onChange={update('email')} />
+                  </label>
+                  <label className="talk__field">
+                    <span className="mono">Phone Number</span>
+                    <input type="tel" placeholder="+91 98765 43210" value={formData.phone} onChange={update('phone')} />
+                  </label>
                 </div>
 
-                <div className="talk-form-row">
-                  <div className="talk-form-group">
-                    <label className="talk-form-label">Email Address *</label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="john@company.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="talk-form-input"
-                    />
-                  </div>
-
-                  <div className="talk-form-group">
-                    <label className="talk-form-label">Phone Number</label>
-                    <input
-                      type="tel"
-                      placeholder="+1 (555) 000-0000"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="talk-form-input"
-                    />
-                  </div>
-                </div>
-
-                <div className="talk-form-group">
-                  <label className="talk-form-label">Select Service</label>
-                  <select
-                    value={formData.service}
-                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                    className="talk-form-input talk-form-select"
-                  >
-                    <option value="Web Development">Web Development</option>
-                    <option value="Mobile App Development">Mobile App Development</option>
-                    <option value="Custom Software Development">Custom Software Development</option>
-                    <option value="Backend & API Development">Backend & API Development</option>
-                    <option value="Cloud & DevOps">Cloud & DevOps</option>
-                    <option value="Automation & AI">Automation & AI</option>
+                <label className="talk__field">
+                  <span className="mono">Select Service</span>
+                  <select value={formData.service} onChange={update('service')}>
+                    {SERVICE_OPTIONS.map((s) => <option key={s} value={s}>{s}</option>)}
                   </select>
-                </div>
+                </label>
 
-                <div className="talk-form-group">
-                  <label className="talk-form-label">Project Details *</label>
-                  <textarea
-                    required
-                    rows={4}
-                    placeholder="Tell us about your project goals and requirements..."
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="talk-form-input talk-form-textarea"
-                  />
-                </div>
+                <label className="talk__field">
+                  <span className="mono">Project Details *</span>
+                  <textarea required rows={4} placeholder="Tell us about your project goals and requirements..." value={formData.message} onChange={update('message')} />
+                </label>
 
-                <button type="submit" className="btn-ritovex-dark talk-submit-btn" disabled={submitting}>
-                  {submitting ? 'Connecting...' : 'Start a Conversation'}
-                  <Send size={16} />
+                <button type="submit" className="btn btn-primary talk__submit" disabled={submitting}>
+                  {submitting ? 'Connecting...' : 'Start a Conversation'} <Send size={15} />
                 </button>
 
-                <div className="talk-privacy-note">
-                  <ShieldCheck size={14} />
-                  <span>Strict NDA Guaranteed. We respect your privacy.</span>
-                </div>
+                <p className="talk__privacy mono"><ShieldCheck size={13} /> Strict NDA Guaranteed. We respect your privacy.</p>
               </form>
             )}
           </div>

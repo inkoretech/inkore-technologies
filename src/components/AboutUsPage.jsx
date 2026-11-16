@@ -3,6 +3,7 @@ import { Box, FolderCheck, Briefcase, Trophy, Users, Search, Layout, Code2, Shie
 import AnimatedCounter from './AnimatedCounter';
 import Services from './Services';
 import WhyUs from './WhyUs';
+import PageHero from './PageHero';
 import './AboutUsPage.css';
 
 export default function AboutUsPage({ onNavigateHome, onOpenContact, onSelectService }) {
@@ -48,27 +49,22 @@ export default function AboutUsPage({ onNavigateHome, onOpenContact, onSelectSer
   return (
     <div className="about-page-wrapper">
       {/* 1. About Us Hero Banner */}
-      <section className="about-hero-section">
-        <div className="container text-center max-w-850 reveal-on-scroll">
-          <div className="badge-pill mb-16">
-            <Box size={14} />
-            <span>About Inkore</span>
-          </div>
-          <h1 className="about-hero-title">We build technology that works for your business.</h1>
-          <p className="about-hero-subtitle">
-            At Inkore, we believe software should do more than just work — it should solve real problems, improve efficiency, and create better experiences.
-          </p>
-          <div className="about-hero-actions">
-            <button className="btn-ritovex-dark" onClick={onOpenContact}>
-              <span>Start a Project</span>
-              <ArrowRight size={16} />
+      <PageHero
+        eyebrow="About Inkore"
+        title="We build technology"
+        accent="that works for your business."
+        subtitle="At Inkore, we believe software should do more than just work — it should solve real problems, improve efficiency, and create better experiences."
+        actions={
+          <>
+            <button className="btn btn-primary" onClick={onOpenContact}>
+              Start a Project <ArrowRight size={16} />
             </button>
-            <a href="#approach" className="btn-ritovex-light">
+            <a href="#approach" className="btn btn-outline" onClick={(e) => { e.preventDefault(); document.getElementById('approach')?.scrollIntoView({ behavior: 'smooth' }); }}>
               Explore Our Approach
             </a>
-          </div>
-        </div>
-      </section>
+          </>
+        }
+      />
 
       {/* 2. Stat Cards Row & Full Narrative Section */}
       <section className="about-details-section">
