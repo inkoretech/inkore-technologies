@@ -12,14 +12,12 @@ export default function HomePage({ onOpenContact, onSelectService }) {
   return (
     <>
       {/* 1. Hero Section */}
-      <Hero 
-        onOpenContact={onOpenContact} 
-      />
+      <Hero onOpenContact={onOpenContact} />
 
       {/* 2. Partner Ticker & About Us Section */}
       <AboutUs onOpenContact={onOpenContact} />
 
-      {/* 3. Dark Services Section */}
+      {/* 3. Services Section */}
       <Services onSelectService={onSelectService} />
 
       {/* 4. Featured Portfolio / Case Studies */}

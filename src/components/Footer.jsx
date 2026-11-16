@@ -1,101 +1,75 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, Globe, Code2, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Globe, Code2, ArrowUpRight } from 'lucide-react';
+import { servicesList } from './Services';
 import './Footer.css';
 
+const techPills = [
+  'Web Architecture', 'Mobile Apps', 'Cloud Infrastructure', 'Enterprise Systems', 'DevOps Automation', 'AI Integration',
+];
+
 export default function Footer({ onOpenContact }) {
-  const techPills = [
-    'Web Architecture', 'Mobile Apps', 'Cloud Infrastructure', 'Enterprise Systems', 'DevOps Automation', 'AI Integration'
-  ];
-
   return (
-    <footer className="footer-section-ritovex-dark">
-      <div className="container">
-        {/* Main 4 Column Grid */}
-        <div className="footer-brand-grid">
-          {/* Brand & Tagline Column */}
-          <div className="footer-brand-col">
-            <Link to="/" className="footer-brand-logo">
-              <img 
-                src="./assets/logo-white.png" 
-                alt="Inkore Technologies" 
-                className="footer-brand-logo-img"
-              />
+    <footer className="foot" data-nav="dark">
+      <div className="foot__glow" aria-hidden="true" />
+      <div className="container foot__inner">
+        {/* Brand statement */}
+        <div className="foot__cta">
+          <div>
+            <Link to="/" className="foot__logo">
+              <img src="./assets/logo-white.png" alt="Inkore Technologies" />
             </Link>
-
-            <p className="footer-brand-tagline">
-              Engineering Digital Excellence.
-            </p>
-
-            <div className="footer-tech-chips-bar">
-              {techPills.map((tech, idx) => (
-                <React.Fragment key={tech}>
-                  <span className="footer-tech-chip">{tech}</span>
-                  {idx < techPills.length - 1 && <span className="footer-chip-dot">•</span>}
-                </React.Fragment>
-              ))}
-            </div>
+            <button className="foot__headline reveal-on-scroll" onClick={onOpenContact} aria-label="Contact Inkore">
+              <span className="display">Engineering Digital</span>
+              <span className="display foot__headline-blue">
+                Excellence.
+                <span className="foot__headline-arrow"><ArrowUpRight size={28} /></span>
+              </span>
+            </button>
           </div>
+          <div className="foot__pills">
+            {techPills.map((t) => <span key={t} className="chip on-dark">{t}</span>)}
+          </div>
+        </div>
 
-          {/* Column 1: Company Navigation */}
-          <div className="footer-col-ritovex">
-            <h4 className="footer-col-head">Navigation</h4>
-            <ul className="footer-col-links">
+        <div className="foot__grid">
+          <div>
+            <h4 className="mono">Navigation</h4>
+            <ul>
               <li><Link to="/">Home</Link></li>
               <li><Link to="/about">About Us</Link></li>
               <li><Link to="/services">Services</Link></li>
               <li><Link to="/work">Work / Portfolio</Link></li>
-              <li><Link to="/estimate">Cost Estimator</Link></li>
               <li><Link to="/contact">Contact</Link></li>
             </ul>
           </div>
 
-          {/* Column 2: Capabilities */}
-          <div className="footer-col-ritovex">
-            <h4 className="footer-col-head">Capabilities</h4>
-            <ul className="footer-col-links">
-              <li><Link to="/services">Web Application Development</Link></li>
-              <li><Link to="/services">Mobile App Engineering</Link></li>
-              <li><Link to="/services">Custom Software Architecture</Link></li>
-              <li><Link to="/services">Cloud & DevOps Infrastructure</Link></li>
-              <li><Link to="/services">AI Integration & Automation</Link></li>
-              <li><Link to="/services">High-Throughput APIs</Link></li>
+          <div>
+            <h4 className="mono">Capabilities</h4>
+            <ul>
+              {servicesList.map((s) => (
+                <li key={s.title}><Link to="/services">{s.title}</Link></li>
+              ))}
             </ul>
           </div>
 
-          {/* Column 3: Contact */}
-          <div className="footer-col-ritovex">
-            <h4 className="footer-col-head">Direct Contact</h4>
-            <ul className="footer-contact-items">
-              <li>
-                <Mail size={16} />
-                <a href="mailto:hello@inkoretech.com">hello@inkoretech.com</a>
-              </li>
-              <li>
-                <Phone size={16} />
-                <a href="tel:+18004656738">+1 (800) 465-6738</a>
-              </li>
-              <li>
-                <Globe size={16} />
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn Corporate</a>
-              </li>
-              <li>
-                <Code2 size={16} />
-                <a href="https://github.com" target="_blank" rel="noreferrer">GitHub Open Source</a>
-              </li>
+          <div>
+            <h4 className="mono">Direct Contact</h4>
+            <ul className="foot__contact">
+              <li><Mail size={15} /><a href="mailto:hello@inkoretech.com">hello@inkoretech.com</a></li>
+              <li><Phone size={15} /><a href="tel:+917012666848">+91 70126 66848</a></li>
+              <li><MapPin size={15} /><span>Kochi, Kerala, India</span></li>
+              <li><Globe size={15} /><a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn Corporate</a></li>
+              <li><Code2 size={15} /><a href="https://github.com" target="_blank" rel="noreferrer">GitHub Open Source</a></li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Sub Bar & Copyright */}
-        <div className="footer-sub-bar">
-          <p className="footer-copy-text">
-            © 2026 Inkore Technologies. All rights reserved.
-          </p>
+        <div className="foot__wordmark" aria-hidden="true">inkore</div>
 
-          <div className="footer-social-inline">
-            <a href="mailto:hello@inkoretech.com" className="footer-mail-link">hello@inkoretech.com</a>
-          </div>
+        <div className="foot__bar mono">
+          <span>© 2026 Inkore Technologies. All rights reserved.</span>
+          <a href="mailto:hello@inkoretech.com">hello@inkoretech.com</a>
         </div>
       </div>
     </footer>

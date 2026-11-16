@@ -1,116 +1,93 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, FolderCheck, Briefcase, Trophy, Users, PhoneCall, ArrowRight } from 'lucide-react';
+import { FolderCheck, Briefcase, Trophy, Users, PhoneCall, ArrowUpRight } from 'lucide-react';
 import AnimatedCounter from './AnimatedCounter';
 import './AboutUs.css';
+
+const partnerLogos = [
+  'MOBILE APP', 'SEO', 'BRANDING', 'MARKETING', 'CUSTOM SOFTWARE', 'UI/UX',
+];
+
+const stats = [
+  { icon: FolderCheck, end: 150, suffix: '+', desc: 'Custom Digital Solutions Delivered' },
+  { icon: Briefcase, end: 12, suffix: '+', desc: 'Years of Strategic IT Engineering' },
+  { icon: Trophy, end: 45, suffix: '+', desc: 'Enterprise Cloud Platforms' },
+  { icon: Users, end: 99, suffix: '%+', desc: 'Client Retention & Partnership' },
+];
 
 export default function AboutUs({ onOpenContact }) {
   const navigate = useNavigate();
 
-  const partnerLogos = [
-    'ABBVIE', 'ALIGN TECH', 'BŪNGE CORP', 'DISCOVER FINANCIAL', 'ESSEX GLOBAL', 'HOLOGIC HEALTH', 'INSULET', 'MICROSOFT AZURE', 'AWS PARTNER', 'GOOGLE CLOUD'
-  ];
-
   return (
-    <section className="about-section-ritovex" id="about">
-      {/* Partner Logo Infinite Smooth Marquee Ticker Bar */}
-      <div className="partner-ticker-wrapper">
-        <div className="ticker-badge">
-          <span>Trusted Technology Partners Worldwide</span>
-        </div>
-        <div className="ticker-marquee-container">
-          <div className="ticker-marquee-track">
-            {partnerLogos.concat(partnerLogos).map((logo, idx) => (
-              <React.Fragment key={idx}>
-                <span className="partner-logo-item">{logo}</span>
-                <span className="partner-dot">•</span>
-              </React.Fragment>
+    <section className="about" id="about">
+      {/* Partner logo marquee */}
+      <div className="marquee">
+        <span className="marquee__label mono">Technology</span>
+        <div className="marquee__viewport" aria-hidden="true">
+          <div className="marquee__track-wrap" data-marquee><div className="marquee__track">
+            {[...partnerLogos, ...partnerLogos, ...partnerLogos, ...partnerLogos].map((logo, i) => (
+              <span key={i} className="marquee__item">
+                {logo}
+                <span className="marquee__star">✦</span>
+              </span>
             ))}
-          </div>
+          </div></div>
         </div>
       </div>
 
-      {/* Main About Us Section */}
       <div className="container section-padding">
-        <div className="text-center max-w-750 reveal-on-scroll">
-          <div className="badge-pill">
-            <span className="badge-pulse-dot"></span>
-            <span>About Inkore</span>
-          </div>
-          <h2 className="section-title">We build technology that works for your business.</h2>
-          <p className="section-subtitle">
+        <div className="about__head">
+          <span className="eyebrow reveal-on-scroll">About Inkore</span>
+          <h2 className="display about__title">
+            <span className="line-mask"><span>We build technology</span></span>
+            <span className="line-mask"><span className="serif-accent">that works for your business.</span></span>
+          </h2>
+          <p className="about__lead" data-split>
             At Inkore, we believe software should do more than just work — it should solve real operational problems, improve efficiency, and create scalable digital experiences. We work with ambitious startups and global enterprises to design, engineer, and deploy custom software tailored to their exact requirements.
           </p>
         </div>
 
-        {/* About Grid */}
-        <div className="about-grid-ritovex">
-          {/* Left Cutout Image with Floating Stat Badge */}
-          <div className="about-image-wrapper reveal-on-scroll reveal-left">
-            <img 
-              src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80" 
-              alt="Inkore Software Engineers Collaborating" 
-              className="about-cutout-img"
+        <div className="about__grid">
+          <div className="about__visual reveal-on-scroll reveal-clip">
+            <img
+              src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80"
+              alt="Inkore Software Engineers Collaborating"
+              data-parallax="-0.06"
             />
-            <div className="floating-hero-badge">
-              <div className="floating-hero-badge-icon">
-                <Trophy size={20} />
-              </div>
+            <div className="about__badge">
+              <span className="about__badge-icon"><Trophy size={18} /></span>
               <div>
-                <div className="floating-hero-badge-title">Enterprise Proven</div>
-                <div className="floating-hero-badge-sub">Over 150+ Digital Systems</div>
+                <strong>Enterprise Proven</strong>
+                <span className="mono">Over 150+ Digital Systems</span>
               </div>
             </div>
           </div>
 
-          {/* Right Stats & Info */}
-          <div className="about-content-right">
-            <div className="stats-2x2-grid">
-              <div className="ritovex-stat-card card-hover-3d reveal-on-scroll delay-1">
-                <div className="stat-card-icon"><FolderCheck size={26} /></div>
-                <div className="stat-card-val"><AnimatedCounter end={150} suffix="+" /></div>
-                <div className="stat-card-divider"></div>
-                <p className="stat-card-desc">Custom Digital Solutions Delivered</p>
-              </div>
-
-              <div className="ritovex-stat-card card-hover-3d reveal-on-scroll delay-2">
-                <div className="stat-card-icon"><Briefcase size={26} /></div>
-                <div className="stat-card-val"><AnimatedCounter end={12} suffix="+" /></div>
-                <div className="stat-card-divider"></div>
-                <p className="stat-card-desc">Years of Strategic IT Engineering</p>
-              </div>
-
-              <div className="ritovex-stat-card card-hover-3d reveal-on-scroll delay-3">
-                <div className="stat-card-icon"><Trophy size={26} /></div>
-                <div className="stat-card-val"><AnimatedCounter end={45} suffix="+" /></div>
-                <div className="stat-card-divider"></div>
-                <p className="stat-card-desc">Enterprise Cloud Platforms</p>
-              </div>
-
-              <div className="ritovex-stat-card card-hover-3d reveal-on-scroll delay-4">
-                <div className="stat-card-icon"><Users size={26} /></div>
-                <div className="stat-card-val"><AnimatedCounter end={99} suffix="%+" /></div>
-                <div className="stat-card-divider"></div>
-                <p className="stat-card-desc">Client Retention & Partnership</p>
-              </div>
+          <div className="about__right">
+            <div className="about__stats">
+              {stats.map((s, i) => {
+                const Icon = s.icon;
+                return (
+                  <div key={s.desc} className={`about-stat reveal-on-scroll delay-${i + 1}`}>
+                    <span className="about-stat__icon"><Icon size={18} /></span>
+                    <strong className="about-stat__val"><AnimatedCounter end={s.end} suffix={s.suffix} /></strong>
+                    <span className="about-stat__desc mono">{s.desc}</span>
+                  </div>
+                );
+              })}
             </div>
 
-            {/* Action Buttons Row */}
-            <div className="about-actions-row reveal-on-scroll delay-3">
-              <button className="btn-ritovex-dark" onClick={() => navigate('/about')}>
-                <span>Learn More About Us</span>
-                <ArrowRight size={16} />
+            <div className="about__actions reveal-on-scroll delay-3">
+              <button className="btn btn-ink" onClick={() => navigate('/about')}>
+                Learn More About Us <ArrowUpRight size={16} />
               </button>
-
-              <div className="phone-contact-box" onClick={onOpenContact}>
-                <div className="phone-icon-box">
-                  <PhoneCall size={18} />
-                </div>
-                <div className="phone-text-group">
-                  <span className="phone-label">Get a Free Consultation</span>
-                  <span className="phone-number">+1 (800) 465-6738</span>
-                </div>
-              </div>
+              <button className="about__phone" onClick={onOpenContact}>
+                <span className="about__phone-icon"><PhoneCall size={16} /></span>
+                <span>
+                  <span className="mono">Get a Free Consultation</span>
+                  <strong>+91 70126 66848</strong>
+                </span>
+              </button>
             </div>
           </div>
         </div>

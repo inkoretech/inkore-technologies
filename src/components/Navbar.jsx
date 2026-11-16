@@ -1,122 +1,79 @@
-import React, { useState } from 'react';
-import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom';
-import { PhoneCall, Menu, X, ArrowRight } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import { Menu, X, ArrowUpRight, ArrowRight, PhoneCall } from 'lucide-react';
 import './Navbar.css';
 
-export default function Navbar({ onOpenContact }) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
+const links = [
+  { to: '/', label: 'Home', end: true, mobile: 'Home' },
+  { to: '/about', label: 'About Us', mobile: 'About Us' },
+  { to: '/services', label: 'Services', mobile: 'Services' },
+  { to: '/work', label: 'Work', mobile: 'Work / Portfolio' },
+  { to: '/contact', label: 'Contact', mobile: 'Contact' },
+];
 
-  const handleSectionClick = (sectionId) => {
-    setMobileMenuOpen(false);
-    if (location.pathname !== '/') {
-      navigate('/');
-      setTimeout(() => {
-        const elem = document.getElementById(sectionId);
-        if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    } else {
-      const elem = document.getElementById(sectionId);
-      if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+export default function Navbar({ onOpenContact }) {
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (open) window.__lenis?.stop(); else window.__lenis?.start();
+    return () => { document.body.style.overflow = ''; window.__lenis?.start(); };
+  }, [open]);
+
+  const close = () => setOpen(false);
 
   return (
-    <header className="navbar-header-ritovex">
-      <div className="container navbar-container-ritovex">
-        {/* Brand Logo with exact Inkore image asset */}
-        <Link to="/" className="navbar-logo-ritovex" onClick={() => setMobileMenuOpen(false)}>
-          <img 
-            src="./assets/logo-transparent.png" 
-            alt="Inkore Technologies" 
-            className="navbar-brand-logo-img"
-          />
+    <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
+      <div className="container nav__inner">
+        <Link to="/" className="nav__brand" onClick={close} aria-label="Inkore Technologies home">
+          <img className="nav__logo nav__logo--dark" src="./assets/logo-transparent.png" alt="Inkore Technologies" />
+          <img className="nav__logo nav__logo--light" src="./assets/logo-white.png" alt="" aria-hidden="true" />
         </Link>
 
-        {/* Center Nav Links */}
-        <nav className="navbar-links-ritovex">
-          <NavLink 
-            to="/" 
-            end 
-            className={({ isActive }) => `nav-link-ritovex ${isActive ? 'active' : ''}`}
-          >
-            Home
-          </NavLink>
-
-          <NavLink 
-            to="/about" 
-            className={({ isActive }) => `nav-link-ritovex ${isActive ? 'active' : ''}`}
-          >
-            About Us
-          </NavLink>
-
-          <NavLink 
-            to="/services" 
-            className={({ isActive }) => `nav-link-ritovex ${isActive ? 'active' : ''}`}
-          >
-            Services
-          </NavLink>
-
-          <NavLink 
-            to="/work" 
-            className={({ isActive }) => `nav-link-ritovex ${isActive ? 'active' : ''}`}
-          >
-            Work
-          </NavLink>
-
-          <NavLink 
-            to="/estimate" 
-            className={({ isActive }) => `nav-link-ritovex ${isActive ? 'active' : ''}`}
-          >
-            Estimator
-          </NavLink>
-
-          <NavLink 
-            to="/contact" 
-            className={({ isActive }) => `nav-link-ritovex ${isActive ? 'active' : ''}`}
-          >
-            Contact
-          </NavLink>
+        <nav className="nav__links" aria-label="Primary">
+          {links.map((l) => (
+            <NavLink key={l.to} to={l.to} end={l.end} className={({ isActive }) => `nav__link ${isActive ? 'is-active' : ''}`}>
+              {l.label}
+            </NavLink>
+          ))}
         </nav>
 
-        {/* Right Info & Phone */}
-        <div className="navbar-right-ritovex">
-          <div className="phone-contact-box" onClick={onOpenContact}>
-            <div className="phone-icon-box">
-              <PhoneCall size={18} />
-            </div>
-            <div className="phone-text-group">
-              <span className="phone-label">Call Any Time</span>
-              <span className="phone-number">+1 (800) 465-6738</span>
-            </div>
-          </div>
-
-          <button 
-            className="mobile-toggle-btn"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle navigation"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        <div className="nav__right">
+          <button className="nav__phone" onClick={onOpenContact}>
+            <span className="nav__phone-icon"><PhoneCall size={16} /></span>
+            <span className="nav__phone-text">
+              <span className="mono">Call Any Time</span>
+              <strong>+91 70126 66848</strong>
+            </span>
+          </button>
+          <button className="nav__toggle" onClick={() => setOpen(!open)} aria-label="Toggle navigation" aria-expanded={open}>
+            {open ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="mobile-drawer-ritovex">
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>Home</Link>
-          <Link to="/about" onClick={() => setMobileMenuOpen(false)}>About Us</Link>
-          <Link to="/services" onClick={() => setMobileMenuOpen(false)}>Services</Link>
-          <Link to="/work" onClick={() => setMobileMenuOpen(false)}>Work / Portfolio</Link>
-          <Link to="/estimate" onClick={() => setMobileMenuOpen(false)}>Cost Estimator</Link>
-          <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
-          <button className="btn-ritovex-dark" onClick={() => { setMobileMenuOpen(false); onOpenContact(); }}>
-            <span>Start a Project</span>
-            <ArrowRight size={16} />
+      <div className={`nav__drawer ${open ? 'is-open' : ''}`} data-lenis-prevent>
+        <div className="container">
+          {links.map((l, i) => (
+            <NavLink key={l.to} to={l.to} end={l.end} onClick={close} className={({ isActive }) => `nav__drawer-link ${isActive ? 'is-active' : ''}`}>
+              <span className="mono">0{i + 1}</span>
+              {l.mobile}
+              <ArrowUpRight size={20} />
+            </NavLink>
+          ))}
+          <button className="btn btn-primary nav__drawer-cta" onClick={() => { close(); onOpenContact(); }}>
+            Start a Project <ArrowRight size={15} />
           </button>
         </div>
-      )}
+      </div>
     </header>
   );
 }

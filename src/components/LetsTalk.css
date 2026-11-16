@@ -1,204 +1,141 @@
-.lets-talk-section-ritovex {
-  background: #f8f9fc;
-  border-top: 1px dashed #e5e7eb;
-}
+.talk { background: var(--paper); }
 
-.lets-talk-grid-ritovex {
+.talk__panel {
+  position: relative;
+  overflow: hidden; overflow: clip;
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
+  grid-template-columns: 1fr 1.15fr;
   gap: 56px;
-  align-items: start;
+  padding: 56px;
+  border-radius: 32px;
+  color: #fff;
+  background:
+    radial-gradient(60% 80% at 100% 0%, rgba(37, 99, 235, 0.5), transparent 60%),
+    radial-gradient(50% 70% at 0% 100%, rgba(37, 99, 235, 0.2), transparent 60%),
+    var(--ink);
+  box-shadow: 0 40px 80px -40px rgba(15, 22, 34, 0.7);
 }
-
-.lets-talk-heading {
-  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
-  font-weight: 800;
-  color: #1a2332;
-  letter-spacing: -0.03em;
-  line-height: 1.12;
-  margin-bottom: 20px;
+.talk__dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  mask-image: linear-gradient(120deg, #000, transparent 60%);
+  -webkit-mask-image: linear-gradient(120deg, #000, transparent 60%);
 }
+.talk__info, .talk__form-wrap { position: relative; }
 
-.lets-talk-subtitle {
-  font-size: 1.05rem;
-  color: #4b5563;
-  line-height: 1.65;
-  margin-bottom: 20px;
-}
+.talk__title { margin: 20px 0 18px; font-size: clamp(2.4rem, 4.4vw, 3.8rem); }
+.talk__title .serif-accent { display: block; color: var(--blue-bright); font-size: 1.02em; }
+.talk__lead { color: var(--text-inv-2); max-width: 440px; }
 
-.cta-action-callout {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #2563EB;
-  margin-bottom: 32px;
-  padding-left: 14px;
-  border-left: 3px solid #2563eb;
-}
-
-.lets-talk-contact-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.talk-contact-card {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 20px;
-  border-radius: 14px;
-  background: #f7f8fa;
-  border: 1px solid #e5e7eb;
-}
-
-.talk-icon-box {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  background: #eff6ff;
-  border: 1px solid #e5e7eb;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #2563EB;
-}
-
-.talk-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #6b7280;
-  display: block;
+.talk__callout {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  color: #fff;
+}
+.talk__contacts { list-style: none; display: grid; gap: 16px; margin-top: 30px; }
+.talk__contacts li { display: flex; align-items: center; gap: 14px; }
+.talk__contacts div { display: flex; flex-direction: column; }
+.talk__contacts .mono { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-inv-2); }
+.talk__contacts a, .talk__contacts div > span:last-child { font-weight: 600; }
+.talk__contacts a:hover { color: var(--blue-bright); }
+.talk__icon {
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--line-dark);
+  color: var(--blue-bright);
 }
 
-.talk-val {
-  font-size: 0.98rem;
-  font-weight: 800;
-  color: #111827;
+/* Form */
+.talk__form-wrap {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-dark);
+  border-radius: 24px;
+  padding: 30px;
+  backdrop-filter: blur(6px);
 }
-
-/* Form Card */
-.lets-talk-form-card {
-  background: #f7f8fa;
-  border: 1px solid #e5e7eb;
-  border-radius: 20px;
-  padding: 40px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-}
-
-.talk-form-title {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #111827;
-  margin-bottom: 24px;
-}
-
-.talk-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.talk-form-row {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-
-.talk-form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.talk-form-label {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #111827;
-}
-
-.talk-form-input {
+.talk__form { display: grid; gap: 16px; }
+.talk__form-title { font-size: 1.5rem; text-transform: uppercase; margin-bottom: 4px; }
+.talk__submit { width: 100%; margin-top: 4px; }
+.talk__field select {
   width: 100%;
-  padding: 12px 16px;
-  border-radius: 8px;
-  background: #ffffff;
-  border: 1px solid #d1d5db;
-  color: #111827;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--line-dark);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-family: var(--font-body);
   font-size: 0.95rem;
-  outline: none;
-  transition: border-color 0.2s;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
 }
-
-.talk-form-input:focus {
-  border-color: #2563EB;
+.talk__field select option { color: var(--ink); }
+.talk__field select:focus { outline: none; border-color: var(--blue-bright); box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2); }
+.talk__services { border: none; }
+.talk__services legend, .talk__field > span {
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-inv-2);
+  margin-bottom: 10px;
 }
-
-.talk-form-select {
-  cursor: pointer;
+.talk__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.talk__chip {
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line-dark);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.25s var(--ease);
 }
+.talk__chip:hover { border-color: rgba(255, 255, 255, 0.4); color: #fff; }
+.talk__chip.is-on { background: #fff; color: var(--ink); border-color: #fff; font-weight: 600; }
 
-.talk-form-textarea {
-  resize: vertical;
-  min-height: 110px;
-}
-
-.talk-submit-btn {
+.talk__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.talk__field { display: flex; flex-direction: column; }
+.talk__field input,
+.talk__field textarea {
   width: 100%;
-  padding: 16px 24px;
-  margin-top: 8px;
-  background: #2563EB;
-  color: #ffffff;
-  border: none;
-  border-radius: var(--radius-button);
-  font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background var(--transition-smooth);
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--line-dark);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+  resize: vertical;
+}
+.talk__field input::placeholder, .talk__field textarea::placeholder { color: rgba(255, 255, 255, 0.35); }
+.talk__field input:focus, .talk__field textarea:focus {
+  outline: none;
+  border-color: var(--blue-bright);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
 }
 
-.talk-submit-btn:hover {
-  background: #1d4ed8;
-}
+.talk__submit-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 6px; }
+.talk__privacy { justify-content: center; display: flex; align-items: center; gap: 6px; font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-inv-2); }
 
-.talk-privacy-note {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  font-size: 0.78rem;
-  color: #6b7280;
-  margin-top: 10px;
-}
+.talk__success { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 40px 0; }
+.talk__success svg { color: var(--blue-bright); }
+.talk__success h3 { font-size: 2rem; text-transform: uppercase; }
+.talk__success p { color: var(--text-inv-2); max-width: 420px; }
 
-.talk-success-box {
-  text-align: center;
-  padding: 20px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+@media (max-width: 980px) {
+  .talk__panel { grid-template-columns: 1fr; padding: 40px 32px; gap: 40px; }
 }
-
-.talk-success-icon {
-  color: #2563EB;
-  margin-bottom: 16px;
-}
-
-.talk-success-box h3 {
-  font-size: 1.5rem;
-  margin-bottom: 12px;
-}
-
-.talk-success-box p {
-  font-size: 0.98rem;
-  color: #4b5563;
-  margin-bottom: 24px;
-}
-
-@media (max-width: 960px) {
-  .lets-talk-grid-ritovex {
-    grid-template-columns: 1fr;
-  }
-  .talk-form-row {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 560px) {
+  .talk__panel { padding: 32px 20px; border-radius: 24px; }
+  .talk__row { grid-template-columns: 1fr; }
+  .talk__form-wrap { padding: 22px 18px; }
 }

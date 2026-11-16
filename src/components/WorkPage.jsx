@@ -1,49 +1,26 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Sparkles, ArrowRight, Layers, ShieldCheck, Trophy } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Portfolio from './Portfolio';
 import Testimonials from './Testimonials';
+import PageHero from './PageHero';
 import './WorkPage.css';
 
 export default function WorkPage({ onOpenContact }) {
-  const navigate = useNavigate();
 
   return (
     <div className="work-page-wrapper">
       {/* 1. Work Page Hero */}
-      <section className="work-hero-section">
-        <div className="container text-center reveal-on-scroll">
-          <div className="badge-pill">
-            <Sparkles size={14} />
-            <span>Featured Case Studies & Work</span>
-          </div>
-
-          <h1 className="work-hero-title">
-            Engineering Digital Excellence across Industries
-          </h1>
-
-          <p className="work-hero-subtitle">
-            From venture-backed startups to enterprise organizations, discover how Inkore engineers high-performance web applications, scalable mobile apps, and robust cloud architectures.
-          </p>
-
-          <div className="work-hero-metrics-bar">
-            <div className="work-metric-item">
-              <span className="work-metric-val">150+</span>
-              <span className="work-metric-lbl">Digital Products Built</span>
-            </div>
-            <div className="work-metric-sep">•</div>
-            <div className="work-metric-item">
-              <span className="work-metric-val">99.9%</span>
-              <span className="work-metric-lbl">Uptime SLA Maintained</span>
-            </div>
-            <div className="work-metric-sep">•</div>
-            <div className="work-metric-item">
-              <span className="work-metric-val">$120M+</span>
-              <span className="work-metric-lbl">Client Transaction Volume</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Featured Case Studies & Work"
+        title="Engineering Digital Excellence"
+        accent="across Industries"
+        subtitle="From venture-backed startups to enterprise organizations, discover how Inkore engineers high-performance web applications, scalable mobile apps, and robust cloud architectures."
+        meta={[
+          { value: '150+', label: 'Digital Products Built' },
+          { value: '99.9%', label: 'Uptime SLA Maintained' },
+          { value: '$120M+', label: 'Client Transaction Volume' },
+        ]}
+      />
 
       {/* 2. Interactive Filterable Portfolio Component */}
       <Portfolio />

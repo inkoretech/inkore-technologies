@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Box, CheckCircle2, Plus, Minus, ArrowRight, Sparkles } from 'lucide-react';
+import { Box, CheckCircle2, Plus, Minus, ArrowRight } from 'lucide-react';
 import LetsTalk from './LetsTalk';
 import Services from './Services';
+import PageHero from './PageHero';
 import './ServicesPage.css';
 
 export default function ServicesPage({ onOpenContact, onSelectService }) {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
-  const navigate = useNavigate();
 
   const faqItems = [
     {
@@ -31,27 +30,19 @@ export default function ServicesPage({ onOpenContact, onSelectService }) {
   return (
     <div className="services-page-wrapper">
       {/* 1. Services Hero Banner */}
-      <section className="services-hero-section">
-        <div className="container text-left reveal-on-scroll">
-          <div className="badge-pill">
-            <Sparkles size={14} />
-            <span>Full-Cycle Engineering</span>
-          </div>
-          <h1 className="services-hero-title">Creative & Resilient IT Solutions</h1>
-          <p className="services-hero-subtitle">
-            We deliver innovative, tailor-made digital engineering that solves complex problems, accelerates market delivery, and scales smoothly alongside your enterprise.
-          </p>
-          <div className="services-hero-actions">
-            <button className="btn-ritovex-dark" onClick={onOpenContact}>
-              <span>Start a Project</span>
-              <ArrowRight size={16} />
+      <PageHero
+        eyebrow="Full-Cycle Engineering"
+        title="Creative & Resilient"
+        accent="IT Solutions"
+        subtitle="We deliver innovative, tailor-made digital engineering that solves complex problems, accelerates market delivery, and scales smoothly alongside your enterprise."
+        actions={
+          <>
+            <button className="btn btn-primary" onClick={onOpenContact}>
+              Start a Project <ArrowRight size={16} />
             </button>
-            <button className="btn-ritovex-light" onClick={() => navigate('/estimate')}>
-              <span>Calculate Project Cost</span>
-            </button>
-          </div>
-        </div>
-      </section>
+          </>
+        }
+      />
 
       {/* 2. Dark Services Rows Component */}
       <Services onSelectService={onSelectService} />
